@@ -282,6 +282,24 @@ _X86_64_BOARD = [
      "platforms/x86_64/qemu/boards/qemu-intel64/index"),
 ]
 
+# Grouping the OS documentation by subsystem instead of by how deep it goes.
+# The scheduler pages were spread over implementation/ and reference/os/;
+# they live under os/scheduling/ now.  reference/os/smp.rst is merged into
+# os/scheduling/smp.rst, which is where its technical description already
+# was.
+_OS_SCHEDULING = [
+    ("implementation/nuttx_tasking", "os/scheduling/nuttx_tasking"),
+    ("implementation/tasks_vs_threads", "os/scheduling/tasks_vs_threads"),
+    ("implementation/processes_vs_tasks", "os/scheduling/processes_vs_tasks"),
+    ("implementation/kernel_threads_vs_pthreads",
+     "os/scheduling/kernel_threads_vs_pthreads"),
+    ("implementation/context_switches", "os/scheduling/context_switches"),
+    ("implementation/preemption_latency", "os/scheduling/preemption_latency"),
+    ("implementation/cancellation_points", "os/scheduling/cancellation_points"),
+    ("implementation/smp", "os/scheduling/smp"),
+    ("reference/os/smp", "os/scheduling/smp"),
+]
+
 redirects = _moved(
     _PLATFORM_ALIGNMENT
     + _TAG_VOCABULARY
@@ -291,4 +309,5 @@ redirects = _moved(
     + _DROPPED_FACTS
     + _SOURCE_TREE_TRUTH
     + _X86_64_BOARD
+    + _OS_SCHEDULING
 )

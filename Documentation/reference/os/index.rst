@@ -22,7 +22,6 @@ in other header files.
   nuttx.rst
   paging.rst
   shm.rst
-  smp.rst
   sleep.rst
   time_clock.rst
   wqueue.rst

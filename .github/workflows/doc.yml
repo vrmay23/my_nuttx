@@ -52,7 +52,11 @@ jobs:
         run: |
           cd Documentation/
           sudo apt update
-          sudo apt install plantuml
+          # graphviz is what plantuml needs for anything other than a
+          # sequence diagram.  It arrives as a Recommends of plantuml, so
+          # this is only making sure of it: without dot, plantuml renders
+          # an image of its own error message and the build still passes.
+          sudo apt install plantuml graphviz
           pip3 install pipenv
           pipenv sync
           pipenv run make html

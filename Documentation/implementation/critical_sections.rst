@@ -23,7 +23,7 @@ When we discuss critical sections here we really refer to one of two mechanisms:
 
 The use of either mechanism will always harm real-time performance.
 The effects of critical sections on real-time performance is discussed in
-:doc:`/implementation/preemption_latency`.
+:doc:`/os/scheduling/preemption_latency`.
 The end result is that a certain amount of **jitter** is added to the real-time response.
 
 Critical sections cannot be avoided within the OS and, as a consequence, a certain

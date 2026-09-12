@@ -31,6 +31,7 @@ Last Updated: |today|
    contributing/index.rst
    introduction/inviolables.rst
    platforms/index.rst
+   os/index.rst
    components/index.rst
    applications/index.rst
    implementation/index.rst

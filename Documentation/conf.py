@@ -32,11 +32,15 @@
 #
 # import os
 
+import pathlib
 import sys
 
 # Add the '_extensions' directory to sys.path, to enable finding Sphinx
 # extensions within.
 sys.path.insert(0, "_extensions")
+sys.path.insert(0, ".")
+
+from redirects import redirects  # noqa: E402,F401  (used by sphinx_reredirects)
 
 # -- Project information -----------------------------------------------------
 
@@ -63,6 +67,7 @@ extensions = [
     "sphinx_design",
     "sphinx_collapse",
     "sphinxcontrib.plantuml",
+    "sphinx_reredirects",
 ]
 
 source_suffix = [".rst", ".md"]
@@ -70,6 +75,18 @@ source_suffix = [".rst", ".md"]
 todo_include_todos = True
 
 autosectionlabel_prefix_document = True
+
+# The release notes under ReleaseNotes/ are a frozen archive: each file is the
+# text exactly as it was written at the time of the release.  They reuse the
+# same section titles over and over ("Bug Fixes", "New Features", one per
+# subsystem), which makes autosectionlabel emit a duplicate-label warning for
+# every repetition.  Nothing cross-references a section *inside* a release
+# note, so simply stop indexing them.  The list is derived from the directory
+# so that new releases are covered automatically.
+suppress_warnings = [
+    f"autosectionlabel.ReleaseNotes/{path.stem}"
+    for path in sorted(pathlib.Path(__file__).parent.glob("ReleaseNotes/NuttX-*.md"))
+]
 
 # do not set Python as primary domain for code blocks
 highlight_language = "none"
@@ -85,6 +102,7 @@ exclude_patterns = [
     "_build",
     "Thumbs.db",
     ".DS_Store",
+    # Not a page of its own: it is inlined by introduction/resources.rst.
     "legacy_README.md",
     "venv",
     ".venv",

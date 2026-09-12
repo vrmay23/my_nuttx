@@ -149,3 +149,132 @@ div.version-selector
   break-inside: avoid;
 }
 
+/* Sidebar header ----------------------------------------------------------
+ *
+ * The logo, the version selector and the search box, in the block at the top
+ * of the sidebar.
+ *
+ * The colours are not chosen, they are the ones in logos/NuttX_Simple.svg --
+ * the logo the NuttX Logos page names as the one to use on documentation.
+ * Taken from the SVG rather than sampled from a PNG, so they are the exact
+ * values the artwork carries:
+ *
+ *   #3c34e3  the indigo of the diamond
+ *   #2b2787  the navy it is shadowed in
+ *   #5a96bd  the steel blue of the trailing strokes
+ *   #cee3f1  the pale blue of the letterform highlights
+ *
+ * This is also why the header stopped clashing with the logo standing in it:
+ * the theme's default #2980b9 is a cyan the NuttX mark has nothing to do
+ * with.
+ */
+
+.wy-side-nav-search {
+  padding: 1.4em .9em 1.1em;
+  background: linear-gradient(160deg, #3c34e3 0%, #2b2787 72%) !important;
+}
+
+/* Mark above wordmark, sharing one link.  The theme's house icon is gone: the
+ * logo is the link home, and two ways home side by side is one too many.
+ */
+
+.wy-side-nav-search > a.nuttx-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45em;
+  margin: 0 0 1em;
+  padding: 0;
+  background: none;
+}
+
+.wy-side-nav-search > a.nuttx-brand img.logo {
+  width: 58px;
+  height: 58px;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.nuttx-brand-name {
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1;
+  color: #fff;
+}
+
+/* The version selector carried a comment in the template asking for
+ * something less raw than a bare OS dropdown.  Give it the same shape and
+ * weight as the search field below so the two read as a pair.
+ */
+
+.version-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  margin-bottom: .75em;
+}
+
+.nuttx-version-label {
+  font-size: .7em;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #cee3f1;
+  opacity: .8;
+}
+
+.version-selector select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: .32em 1.9em .32em .75em;
+  border: 1px solid rgba(90, 150, 189, .75);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, .1);
+  color: #fff;
+  font-size: .85em;
+  line-height: 1.4;
+  cursor: pointer;
+  /* The chevron is drawn here rather than fetched, so the sidebar needs no
+   * extra asset and no network. */
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, .75) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, .75) 50%, transparent 50%);
+  background-position: right 1em center, right .65em center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.version-selector select:hover,
+.version-selector select:focus {
+  border-color: rgba(255, 255, 255, .55);
+  background-color: rgba(255, 255, 255, .18);
+  outline: none;
+}
+
+.version-selector select option {
+  color: #404040;
+  background: #fff;
+}
+
+.wy-side-nav-search input[type="text"] {
+  border: 1px solid rgba(90, 150, 189, .75) !important;
+  border-radius: 20px !important;
+  background-color: rgba(255, 255, 255, .1) !important;
+  color: #fff;
+  padding: .5em 1em;
+  box-shadow: none !important;
+}
+
+.wy-side-nav-search input[type="text"]::placeholder {
+  color: #cee3f1;
+  opacity: .75;
+}
+
+.wy-side-nav-search input[type="text"]:focus {
+  border-color: rgba(255, 255, 255, .55) !important;
+  background-color: rgba(255, 255, 255, .16) !important;
+  outline: none;
+}

@@ -32,8 +32,11 @@
 #
 # import os
 
+import datetime
+import os
 import pathlib
 import sys
+import time
 
 # Add the '_extensions' directory to sys.path, to enable finding Sphinx
 # extensions within.
@@ -46,7 +49,19 @@ from redirects import redirects  # noqa: E402,F401  (used by sphinx_reredirects)
 
 project = "NuttX"
 
-copyright = "2023, The Apache Software Foundation"
+# The start year is the one the NOTICE file at the repository root carries;
+# the end year is the year the documentation is built, so that the footer
+# stops going stale the moment a release slips past New Year.  SOURCE_DATE_EPOCH
+# is honoured so that a build stays reproducible, which is what the ASF release
+# process needs -- Sphinx rewrites the trailing year from it as well, and this
+# way the two agree instead of fighting.
+_COPYRIGHT_SINCE = 2020
+_build_year = datetime.datetime.fromtimestamp(
+    int(os.environ.get("SOURCE_DATE_EPOCH", time.time())),
+    datetime.timezone.utc,
+).year
+
+copyright = f"{_COPYRIGHT_SINCE}-{_build_year}, The Apache Software Foundation"
 author = "NuttX community"
 version = release = "latest"
 

@@ -2,8 +2,6 @@
 ``syslogd``
 ===========
 
-.. tags:: experimental
-
 The ``syslogd`` command is used as a "syslog daemon". It sends syslog entries
 over the network using UDP so that they can be consumed by a central logging
 server. This is achieved by reading the newline separated long entries from the

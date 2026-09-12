@@ -2,7 +2,7 @@
 Espressif ESP32-P4
 ==================
 
-.. tags:: chip:esp32p4, arch:risc-v, vendor:espressif
+.. tags:: arch:risc-v, chip:esp32p4, vendor:espressif
 
 The ESP32-P4 is a high-performance, highly integrated SoC featuring RISC-V
 processors, rich multimedia capabilities, and abundant peripherals. It targets

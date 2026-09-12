@@ -29,4 +29,266 @@ Keep the entries grouped by the change that introduced them and keep each
 group sorted, so that the file stays reviewable as it grows.
 """
 
-redirects = {}
+import posixpath
+
+
+def _moved(pairs):
+    """Turn (old docname, new docname) pairs into a sphinx-reredirects map.
+
+    sphinx-reredirects expects the target to be written relative to the
+    directory the *old* page used to live in, which is easy to get wrong by
+    hand.  Spell the moves out as document names and let posixpath work the
+    relative link out.
+    """
+    out = {}
+    for old, new in pairs:
+        assert old not in out, f"duplicate redirect for {old}"
+        out[old] = posixpath.relpath(new, posixpath.dirname(old)) + ".html"
+    return out
+
+
+# Aligning Documentation/platforms/ with the source tree.
+#
+#   * the architecture directory was spelled "misco" instead of "misoc";
+#   * the chip directory "ra4m1" is "ra4" under arch/ and boards/;
+#   * LPC17xx and LPC40xx are one directory in the source tree
+#     (arch/arm/src/lpc17xx_40xx, boards/arm/lpc17xx_40xx) but were two here;
+#   * four boards were filed under a name the source tree does not use.
+_PLATFORM_ALIGNMENT = [
+    # misco -> misoc
+    ("platforms/misco/index", "platforms/misoc/index"),
+    ("platforms/misco/lm32/index", "platforms/misoc/lm32/index"),
+    ("platforms/misco/lm32/boards/misoc/index",
+     "platforms/misoc/lm32/boards/misoc/index"),
+
+    # ra4m1 -> ra4
+    ("platforms/arm/ra4m1/index", "platforms/arm/ra4/index"),
+    ("platforms/arm/ra4m1/boards/arduino-r4-minima/index",
+     "platforms/arm/ra4/boards/arduino-r4-minima/index"),
+    ("platforms/arm/ra4m1/boards/xiao-ra4m1/index",
+     "platforms/arm/ra4/boards/xiao-ra4m1/index"),
+
+    # lpc17xx -> lpc17xx_40xx
+    ("platforms/arm/lpc17xx/index", "platforms/arm/lpc17xx_40xx/index"),
+    ("platforms/arm/lpc17xx/boards/lincoln60/index",
+     "platforms/arm/lpc17xx_40xx/boards/lincoln60/index"),
+    ("platforms/arm/lpc17xx/boards/lpcxpresso-lpc1768/index",
+     "platforms/arm/lpc17xx_40xx/boards/lpcxpresso-lpc1768/index"),
+    ("platforms/arm/lpc17xx/boards/mbed/index",
+     "platforms/arm/lpc17xx_40xx/boards/mbed/index"),
+    ("platforms/arm/lpc17xx/boards/mcb1700/index",
+     "platforms/arm/lpc17xx_40xx/boards/mcb1700/index"),
+    ("platforms/arm/lpc17xx/boards/olimex-lpc1766stk/index",
+     "platforms/arm/lpc17xx_40xx/boards/olimex-lpc1766stk/index"),
+    ("platforms/arm/lpc17xx/boards/open1788/index",
+     "platforms/arm/lpc17xx_40xx/boards/open1788/index"),
+    ("platforms/arm/lpc17xx/boards/pnev5180b/index",
+     "platforms/arm/lpc17xx_40xx/boards/pnev5180b/index"),
+    ("platforms/arm/lpc17xx/boards/u-blox-c027/index",
+     "platforms/arm/lpc17xx_40xx/boards/u-blox-c027/index"),
+    ("platforms/arm/lpc17xx/boards/zkit-arm-1769/index",
+     "platforms/arm/lpc17xx_40xx/boards/zkit-arm-1769/index"),
+
+    # lpc40xx -> lpc17xx_40xx
+    ("platforms/arm/lpc40xx/index", "platforms/arm/lpc17xx_40xx/lpc40xx"),
+    ("platforms/arm/lpc40xx/boards/lpc4088-devkit/index",
+     "platforms/arm/lpc17xx_40xx/boards/lpc4088-devkit/index"),
+    ("platforms/arm/lpc40xx/boards/lpc4088-quickstart/index",
+     "platforms/arm/lpc17xx_40xx/boards/lpc4088-quickstart/index"),
+    ("platforms/arm/lpc40xx/boards/lx_cpu/index",
+     "platforms/arm/lpc17xx_40xx/boards/lx_cpu/index"),
+
+    # boards filed under a name the source tree does not use
+    ("platforms/arm/stm32f1/boards/hymini-stm32/index",
+     "platforms/arm/stm32f1/boards/hymini-stm32v/index"),
+    ("platforms/arm/mps/boards/mps2-an512/index",
+     "platforms/arm/mps/boards/mps2-an521/index"),
+    ("platforms/mips/jz4780/boards/mips-creator-ci20/index",
+     "platforms/mips/jz4780/boards/ci20/index"),
+    ("platforms/tricore/tc397/boards/kit_a2g_tc397_tft/index",
+     "platforms/tricore/tc397/boards/a2g-tc397-5v-tft/index"),
+]
+
+# Normalising the tag vocabulary.  Tag pages have stable URLs under _tags/,
+# so a renamed tag needs a redirect like any other page.  Tags that were
+# dropped rather than renamed point at the overview.
+_TAG_VOCABULARY = [
+    # The architecture is the directory: arch/risc-v, boards/risc-v.
+    ("_tags/arch-riscv", "_tags/arch-risc-v"),
+    # Lower case, like arch/risc-v/src/esp32c3.
+    ("_tags/chip-esp32-c3", "_tags/chip-esp32c3"),
+    # Tiva is a Texas Instruments product line, not a vendor.
+    ("_tags/vendor-tiva", "_tags/vendor-ti"),
+    # Peripherals and port maturity stopped being tags altogether; see
+    # _DROPPED_FACTS below.
+    ("_tags/ethernet", "_tags/tagsindex"),
+    ("_tags/wifi", "_tags/tagsindex"),
+    ("_tags/experimental", "_tags/tagsindex"),
+
+    # Dropped: armv8-m and cortex-m33 are cores, not architectures, and the
+    # pages that carried them already carry arch:arm.
+    ("_tags/arch-armv8m", "_tags/tagsindex"),
+    ("_tags/arch-cm33", "_tags/tagsindex"),
+    # Dropped: these came from the board template, which no longer emits
+    # live tags of its own.
+    ("_tags/arch-example", "_tags/tagsindex"),
+    ("_tags/chip-example", "_tags/tagsindex"),
+    ("_tags/vendor-example", "_tags/tagsindex"),
+]
+
+# Splitting part numbers out of chip:.  chip: is now exactly the set of chip
+# family directories; the individual part on a board moved to part:.
+_CHIP_TO_PART = [
+    ("_tags/chip-cxd5602", "_tags/part-cxd5602"),
+    ("_tags/chip-esp32a1s", "_tags/part-esp32a1s"),
+    ("_tags/chip-esp32picod4", "_tags/part-esp32picod4"),
+    ("_tags/chip-esp32wroom32", "_tags/part-esp32wroom32"),
+    ("_tags/chip-esp32wrover32", "_tags/part-esp32wrover32"),
+    ("_tags/chip-fpga", "_tags/part-fpga"),
+    ("_tags/chip-ht32f49163", "_tags/part-ht32f49163"),
+    ("_tags/chip-imx93", "_tags/part-imx93"),
+    ("_tags/chip-imx95", "_tags/part-imx95"),
+    ("_tags/chip-nrf52832", "_tags/part-nrf52832"),
+    ("_tags/chip-nrf52840", "_tags/part-nrf52840"),
+    ("_tags/chip-nrf5340", "_tags/part-nrf5340"),
+    ("_tags/chip-nrf9160", "_tags/part-nrf9160"),
+    ("_tags/chip-rp2350", "_tags/part-rp2350"),
+    ("_tags/chip-rp2350b", "_tags/part-rp2350b"),
+    ("_tags/chip-stm32c071", "_tags/part-stm32c071"),
+    ("_tags/chip-stm32c092", "_tags/part-stm32c092"),
+    ("_tags/chip-stm32c562", "_tags/part-stm32c562"),
+    ("_tags/chip-stm32f051", "_tags/part-stm32f051"),
+    ("_tags/chip-stm32f072", "_tags/part-stm32f072"),
+    ("_tags/chip-stm32f091", "_tags/part-stm32f091"),
+    ("_tags/chip-stm32f100", "_tags/part-stm32f100"),
+    ("_tags/chip-stm32f103", "_tags/part-stm32f103"),
+    ("_tags/chip-stm32f107", "_tags/part-stm32f107"),
+    ("_tags/chip-stm32f205", "_tags/part-stm32f205"),
+    ("_tags/chip-stm32f207", "_tags/part-stm32f207"),
+    ("_tags/chip-stm32f302", "_tags/part-stm32f302"),
+    ("_tags/chip-stm32f303", "_tags/part-stm32f303"),
+    ("_tags/chip-stm32f334", "_tags/part-stm32f334"),
+    ("_tags/chip-stm32f401", "_tags/part-stm32f401"),
+    ("_tags/chip-stm32f405", "_tags/part-stm32f405"),
+    ("_tags/chip-stm32f407", "_tags/part-stm32f407"),
+    ("_tags/chip-stm32f411", "_tags/part-stm32f411"),
+    ("_tags/chip-stm32f412", "_tags/part-stm32f412"),
+    ("_tags/chip-stm32f427", "_tags/part-stm32f427"),
+    ("_tags/chip-stm32f429", "_tags/part-stm32f429"),
+    ("_tags/chip-stm32f446", "_tags/part-stm32f446"),
+    ("_tags/chip-stm32f722", "_tags/part-stm32f722"),
+    ("_tags/chip-stm32f746", "_tags/part-stm32f746"),
+    ("_tags/chip-stm32f767", "_tags/part-stm32f767"),
+    ("_tags/chip-stm32f769", "_tags/part-stm32f769"),
+    ("_tags/chip-stm32f777", "_tags/part-stm32f777"),
+    ("_tags/chip-stm32g070", "_tags/part-stm32g070"),
+    ("_tags/chip-stm32g071", "_tags/part-stm32g071"),
+    ("_tags/chip-stm32g431", "_tags/part-stm32g431"),
+    ("_tags/chip-stm32g474", "_tags/part-stm32g474"),
+    ("_tags/chip-stm32h503", "_tags/part-stm32h503"),
+    ("_tags/chip-stm32h533", "_tags/part-stm32h533"),
+    ("_tags/chip-stm32h563", "_tags/part-stm32h563"),
+    ("_tags/chip-stm32h723", "_tags/part-stm32h723"),
+    ("_tags/chip-stm32h743", "_tags/part-stm32h743"),
+    ("_tags/chip-stm32h745", "_tags/part-stm32h745"),
+    ("_tags/chip-stm32h747", "_tags/part-stm32h747"),
+    ("_tags/chip-stm32h750", "_tags/part-stm32h750"),
+    ("_tags/chip-stm32h753", "_tags/part-stm32h753"),
+    ("_tags/chip-stm32h7s3", "_tags/part-stm32h7s3"),
+    ("_tags/chip-stm32l053", "_tags/part-stm32l053"),
+    ("_tags/chip-stm32l072", "_tags/part-stm32l072"),
+    ("_tags/chip-stm32l073", "_tags/part-stm32l073"),
+    ("_tags/chip-stm32l152", "_tags/part-stm32l152"),
+    ("_tags/chip-stm32l432", "_tags/part-stm32l432"),
+    ("_tags/chip-stm32l452", "_tags/part-stm32l452"),
+    ("_tags/chip-stm32l475", "_tags/part-stm32l475"),
+    ("_tags/chip-stm32l476", "_tags/part-stm32l476"),
+    ("_tags/chip-stm32l496", "_tags/part-stm32l496"),
+    ("_tags/chip-stm32l4r9", "_tags/part-stm32l4r9"),
+    ("_tags/chip-stm32l552", "_tags/part-stm32l552"),
+    ("_tags/chip-stm32l562", "_tags/part-stm32l562"),
+    ("_tags/chip-stm32n657", "_tags/part-stm32n657"),
+    ("_tags/chip-stm32u083", "_tags/part-stm32u083"),
+    ("_tags/chip-stm32u3c5", "_tags/part-stm32u3c5"),
+    ("_tags/chip-stm32u585", "_tags/part-stm32u585"),
+    ("_tags/chip-stm32u5a5", "_tags/part-stm32u5a5"),
+    ("_tags/chip-stm32wb55", "_tags/part-stm32wb55"),
+    ("_tags/chip-stm32wl55", "_tags/part-stm32wl55"),
+    ("_tags/chip-tm4c123", "_tags/part-tm4c123"),
+    ("_tags/chip-ultrascale", "_tags/part-ultrascale"),
+    ("_tags/chip-virt", "_tags/part-virt"),
+    ("_tags/chip-xczu28dr", "_tags/part-xczu28dr"),
+]
+
+# Dropped when the vocabulary was tightened: chip:stm32, chip:stm32wl and
+# chip:zynq were product lines rather than families, and every page carrying
+# them already carried its family.  "Every STM32 board" is vendor:st now.
+_DROPPED_ROLLUPS = [
+    ("_tags/chip-stm32", "_tags/vendor-st"),
+    ("_tags/chip-stm32wl", "_tags/chip-stm32wl5"),
+    ("_tags/chip-zynq", "_tags/chip-zynq-mpsoc"),
+]
+
+# vendor: now names who makes the chip and is derived from the chip family.
+# The board makers it used to hold are already in the board names.
+_DROPPED_BOARD_VENDORS = [
+    ("_tags/vendor-arduino", "_tags/tagsindex"),
+    ("_tags/vendor-beagleboard", "_tags/tagsindex"),
+    ("_tags/vendor-elegoo", "_tags/tagsindex"),
+    ("_tags/vendor-mikroelektronika", "_tags/tagsindex"),
+    ("_tags/vendor-pine64", "_tags/tagsindex"),
+    ("_tags/vendor-raspberry-pi", "_tags/tagsindex"),
+    ("_tags/vendor-sipeed", "_tags/tagsindex"),
+    ("_tags/vendor-xunlong", "_tags/tagsindex"),
+    ("_tags/vendor-vega", "_tags/vendor-nxp"),
+    # Freescale became part of NXP in 2015.
+    ("_tags/vendor-freescale", "_tags/vendor-nxp"),
+]
+
+# What a board offers, and how far its port has been taken, are facts about
+# the hardware.  As tags they covered a twentieth of the boards that actually
+# have the peripheral, which reads as a complete answer and is not one; and
+# every page tagged status:experimental already said so in its own text.  Both
+# now live in the Support Status and Peripheral Support sections of the board
+# page, where there is room to be exact.
+_DROPPED_FACTS = [
+    ("_tags/peripheral-dac", "_tags/tagsindex"),
+    ("_tags/peripheral-ethernet", "_tags/tagsindex"),
+    ("_tags/peripheral-wifi", "_tags/tagsindex"),
+    ("_tags/status-experimental", "_tags/tagsindex"),
+]
+
+# Two directories that only the source tree could settle.  tricore/tc4d9 was a
+# misspelling of arch/tricore/src/tc4da (the page itself is titled TC4DA), and
+# avr/atmega128, atmega1284p and atmega2560 are parts of the atmega family
+# rather than families of their own -- arch/avr/src/ has one atmega directory.
+# The pages stay where they are, because they carry real per part content;
+# only the tags were wrong.
+_SOURCE_TREE_TRUTH = [
+    ("platforms/tricore/tc4d9/index", "platforms/tricore/tc4da/index"),
+    ("platforms/tricore/tc4d9/boards/triboard_tc4x9_com/index",
+     "platforms/tricore/tc4da/boards/triboard_tc4x9_com/index"),
+    ("_tags/chip-tc4d9", "_tags/chip-tc4da"),
+    ("_tags/chip-atmega128", "_tags/part-atmega128"),
+    ("_tags/chip-atmega1284p", "_tags/part-atmega1284p"),
+    ("_tags/chip-atmega2560", "_tags/part-atmega2560"),
+]
+
+# boards/x86_64/qemu/qemu-intel64/ is where the source tree files this board,
+# so that is where its page belongs.  platforms/x86_64/intel64/ stays: it is a
+# real family under arch/x86_64/src/, it just has no boards of its own.
+_X86_64_BOARD = [
+    ("platforms/x86_64/intel64/boards/qemu-intel64/index",
+     "platforms/x86_64/qemu/boards/qemu-intel64/index"),
+]
+
+redirects = _moved(
+    _PLATFORM_ALIGNMENT
+    + _TAG_VOCABULARY
+    + _CHIP_TO_PART
+    + _DROPPED_ROLLUPS
+    + _DROPPED_BOARD_VENDORS
+    + _DROPPED_FACTS
+    + _SOURCE_TREE_TRUTH
+    + _X86_64_BOARD
+)

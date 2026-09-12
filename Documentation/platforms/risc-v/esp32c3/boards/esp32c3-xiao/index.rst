@@ -2,6 +2,8 @@
 Seeed Studio XIAO ESP32C3
 =========================
 
+.. tags:: arch:risc-v, chip:esp32c3, vendor:espressif
+
 The `Seeed Studio XIAO ESP32C3 <https://wiki.seeedstudio.com/xiao_esp32c3_getting_started/>`_ is a general purpose board supplied by
 Seeed Studio and it is compatible with the Espressif ESP32C3 ecosystem, sharing the same MCU as ESP32-C3-DevKitC.
 

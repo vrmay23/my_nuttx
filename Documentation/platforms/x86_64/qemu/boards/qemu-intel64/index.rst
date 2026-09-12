@@ -2,6 +2,8 @@
 qemu-intel64
 ============
 
+.. tags:: arch:x86_64, chip:qemu
+
 This page file describes the contents of the build configurations available
 for the NuttX QEMU x86_64 port.
 

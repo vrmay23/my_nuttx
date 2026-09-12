@@ -139,8 +139,6 @@ You can find this in most Linux distributions::
 Supported Boards
 ================
 
-.. toctree::
-   :glob:
-   :maxdepth: 1
-
-   boards/*/*
+The boards NuttX runs on with this core are filed under the platform they
+emulate or sit on rather than under the core itself, the same way the source
+tree files them: see :doc:`QEMU </platforms/x86_64/qemu/index>`.

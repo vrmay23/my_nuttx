@@ -45,6 +45,7 @@ from redirects import redirects  # noqa: E402,F401  (used by sphinx_reredirects)
 # -- Project information -----------------------------------------------------
 
 project = "NuttX"
+
 copyright = "2023, The Apache Software Foundation"
 author = "NuttX community"
 version = release = "latest"
@@ -64,6 +65,7 @@ extensions = [
     "sphinx_copybutton",
     "warnings_filter",
     "sphinx_tags",
+    "tags_overview",
     "sphinx_design",
     "sphinx_collapse",
     "sphinxcontrib.plantuml",

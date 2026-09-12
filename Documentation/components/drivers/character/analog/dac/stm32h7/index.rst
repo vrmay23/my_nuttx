@@ -2,7 +2,7 @@
 STM32H7 DAC Driver
 ====================
 
-.. tags:: chip:stm32h7, arch:arm, vendor:st, peripheral:dac
+.. tags:: chip:stm32h7, arch:arm, vendor:st
 
 The STM32H7 DAC is a 12-bit, voltage-output, dual-channel digital-to-analog
 converter embedded in the STM32H7 MCU. The driver supports two operating modes:

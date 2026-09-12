@@ -2,6 +2,8 @@
 Seeed Studio XIAO RA4M1
 =======================
 
+.. tags:: arch:arm, chip:ra4, vendor:renesas
+
 The `Seeed Studio XIAO RA4M1 <https://wiki.seeedstudio.com/getting_started_xiao_ra4m1/>`_ is a general purpose board supplied by
 Seeed Studio and it is compatible with the Renesas RA4M1 ecosystem, sharing the same MCU as Arduino R4 Minima
 (R7FA4M1AB3CFM).

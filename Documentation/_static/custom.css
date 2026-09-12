@@ -91,3 +91,61 @@ div.version-selector
 {
   margin-bottom: 1em;
 }
+
+/* Tag overview ------------------------------------------------------------
+ *
+ * The tag overview is a tree: architectures hold chip families, and families
+ * hold the parts fitted to boards.  sphinx_rtd_theme lays nested sections
+ * flush against the same left margin, so the reader gets four levels of
+ * heading with nothing saying which belongs to which.  Indent each level and
+ * draw the line it hangs from.
+ *
+ * The line is grey rather than a theme colour so that it survives being read
+ * through a dark mode extension, which tends to rewrite anything with a hue.
+ * !important throughout, for the same reason as the table rules above: on
+ * Read the Docs the common stylesheets load after this one.
+ */
+
+.tag-overview section {
+  margin-left: .25em !important;
+  padding-left: 1.75em !important;
+  border-left: 2px solid rgba(127, 127, 127, .45) !important;
+}
+
+/* Nothing may pull a heading back out of its own section: that cancels the
+ * indentation and puts every level back on the same margin, which is the bug
+ * this whole block exists to fix.
+ */
+
+.tag-overview section > h2,
+.tag-overview section > h3,
+.tag-overview section > h4 {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 1.3em !important;
+  margin-bottom: .4em !important;
+}
+
+/* The long lists -- arm alone holds 71 chip families -- leave most of the
+ * width empty in one column and turn the page into scrolling.  Only the lists
+ * worth splitting get the class, which the page generator decides; a short
+ * list stays in one column, because sending the eye across the width for
+ * three names costs more than it saves.
+ *
+ * The column width is in em so that the columns collapse back to one on a
+ * narrow screen instead of being cut off.
+ */
+
+.tag-overview .tag-columns .toctree-wrapper ul {
+  column-width: 16em;
+  column-gap: 2.5em;
+}
+
+.tag-overview .toctree-wrapper ul {
+  margin-bottom: 12px !important;
+}
+
+.tag-overview .toctree-wrapper li {
+  break-inside: avoid;
+}
+

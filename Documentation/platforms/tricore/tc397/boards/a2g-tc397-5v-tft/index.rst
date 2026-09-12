@@ -2,6 +2,8 @@
 A2G_TC397_5V_TFT
 =================
 
+.. tags:: arch:tricore, chip:tc397, vendor:infineon
+
 This page file describes the contents of the build configurations available
 for the NuttX TriCore port.
 

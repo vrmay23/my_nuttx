@@ -2,6 +2,8 @@
 Arduino R4 Minima
 =================
 
+.. tags:: arch:arm, chip:ra4, vendor:renesas
+
 This board features the R7FA4M1ABxCFM MCU with 256 KiB of FLASH
 and 32 KiB of SRAM running at 64 MHz (internal clock - HOCO).
 

@@ -2,6 +2,8 @@
 TRIBOARD_TC4X9_COM
 ==================
 
+.. tags:: arch:tricore, chip:tc4da, vendor:infineon
+
 This port should work on TRIBOARD_TC4X9_COM with a proper CPU.
 The mandatory CPU features are:
 

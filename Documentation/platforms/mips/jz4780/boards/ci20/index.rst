@@ -2,7 +2,7 @@
 MIPS Creator CI20
 =================
 
-.. tags:: arch:mips, chip:jz4780
+.. tags:: arch:mips, chip:jz4780, vendor:ingenic
 
 .. figure:: ci20.jpg
    :figwidth: 100%

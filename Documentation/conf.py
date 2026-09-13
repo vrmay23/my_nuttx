@@ -81,6 +81,7 @@ extensions = [
     "warnings_filter",
     "sphinx_tags",
     "tags_overview",
+    "review_highlight",
     "sphinx_design",
     "sphinx_collapse",
     "sphinxcontrib.plantuml",

@@ -171,3 +171,13 @@ Guides that apply to one part or one core rather than to NuttX in general.  Thes
    chip-specific/stm32_ports.rst
    chip-specific/stm32ccm.rst
    chip-specific/stm32nullpointer.rst
+
+Debugging
+=========
+
+Finding out what a system is really doing, on the target.
+
+.. toctree::
+   :maxdepth: 1
+
+   /debugging/index.rst

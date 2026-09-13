@@ -28,23 +28,12 @@ Last Updated: |today|
    Home <self>
    introduction/index.rst
    quickstart/index.rst
-   contributing/index.rst
-   introduction/inviolables.rst
    platforms/index.rst
-   os/index.rst
-   components/index.rst
-   applications/index.rst
-   implementation/index.rst
-   reference/index.rst
-   faq/index.rst
-   debugging/index.rst
-   testing/index.rst
    guides/index.rst
-   standards/index.rst
-   security.rst
-   ReleaseNotes/index.rst
-   glossary.rst
-   logos/index.rst
-   _tags/tagsindex.rst
+   os/index.rst
+   reference/index.rst
+   applications/index.rst
+   developing/index.rst
+   about/index.rst
 
 .. include:: substitutions.rst

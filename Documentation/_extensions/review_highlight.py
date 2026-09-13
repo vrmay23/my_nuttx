@@ -56,6 +56,14 @@ REVIEW_PAGES = {
     "os/drivers/special/pipes",
     "os/drivers/special/clk",
     "os/drivers/special/usrsock",
+    "os/drivers/special/rwbuffer",
+    "os/drivers/special/devicetree",
+    "os/drivers/character/nullzero",
+    "os/drivers/character/ipcc",
+    "os/drivers/character/loop",
+    "os/drivers/character/efuse",
+    "os/filesystem/nfs",
+    "os/concurrency/index",
 }
 
 #: Sections added to a page that already existed.

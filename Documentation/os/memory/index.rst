@@ -4,6 +4,26 @@ Memory Management
 
 This page discusses the NuttX memory management logic.
 
+How many heaps there are, and what separates them, follows from the build
+mode:
+
+.. figure:: memory_models.svg
+   :align: center
+   :width: 100%
+   :alt: A flat build has one heap shared by kernel and applications; a
+         protected build splits it into a kernel heap and a user heap
+         separated by an MPU; a kernel build gives each process its own heap
+         in its own virtual address space, provided by an MMU.
+
+   One heap, two heaps, or one per process.  See :doc:`/os/index` for what
+   each build mode is.
+
+The practical consequence is which allocator a piece of code may call.  In a
+flat build ``malloc()`` and ``kmm_malloc()`` are the same allocator.  In a
+protected or kernel build they are not, and kernel code that calls
+``malloc()`` is a bug -- it would hand out memory the application is not
+allowed to touch, or that the kernel cannot reach.
+
 .. toctree::
    :maxdepth: 1
 

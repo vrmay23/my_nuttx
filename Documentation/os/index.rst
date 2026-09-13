@@ -12,6 +12,44 @@ For the POSIX interface an application sees, go to
 :doc:`/reference/user/index` instead.  That is a different question -- what
 you may call -- and it has its own section.
 
+.. figure:: system_map.svg
+   :align: center
+   :width: 100%
+   :alt: The layers of NuttX, from applications down through the C library
+         and the system call boundary to the kernel subsystems, the device
+         drivers, and the architecture, chip and board code.
+
+   Where each section of this documentation sits in the system, and which
+   directory of the source tree it describes.
+
+The one decision that changes everything
+========================================
+
+Before reading any subsystem page it is worth knowing which **build mode**
+you are in, because it decides whether there is a boundary between your
+application and the kernel at all:
+
+.. figure:: build_modes.svg
+   :align: center
+   :width: 100%
+   :alt: The same call to write() under the three build modes: a function
+         call in a flat build, a system call across an MPU boundary in a
+         protected build, and a system call into a separate address space in
+         a kernel build.
+
+   The same ``write()`` under ``CONFIG_BUILD_FLAT``,
+   ``CONFIG_BUILD_PROTECTED`` and ``CONFIG_BUILD_KERNEL``.
+
+A flat build is one program: calling ``write()`` is a function call, and an
+application bug can corrupt the kernel.  A protected build puts an MPU
+between the two halves, so the same call becomes a system call.  A kernel
+build goes further and gives each process its own address space through an
+MMU, which is what makes ``fork()`` and on-demand paging possible -- and why
+they do not exist in the other two.
+
+Much of what the pages below say depends on this choice, which is why it is
+worth settling first.
+
 The kernel
 ==========
 

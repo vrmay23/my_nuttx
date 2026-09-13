@@ -148,33 +148,28 @@ Reference: ``nuttx/sched/sched/sched.h``.
 State Transition Diagram
 ========================
 
-The state of a thread can then be easily represented with this simple state
-transition diagram.
+.. figure:: task_states.svg
+   :align: center
+   :width: 100%
+   :alt: A task is created inactive, becomes ready to run, is given a CPU,
+         may block waiting for a resource and return to ready, and finally
+         exits.
 
-.. todo:: Provide State Transition Diagram.
+   The task lists above, drawn as the states a thread moves through.
 
 
 Scheduling Policies
 ===================
 
-In order to be a real-time OS, an RTOS must support ``SCHED_FIFO``.
-That is, strict priority scheduling. The thread with the highest priority
-runs.. Period. The thread with the highest priority is always associated
-with the TCB at the head of the ``g_readytorun`` list.
+Which of ``SCHED_FIFO``, ``SCHED_RR`` and ``SCHED_SPORADIC`` a thread runs
+under decides only how threads of *equal* priority share the CPU.  The
+policies, their parameters and when to choose each one are described in
+:doc:`index`.
 
-NuttX supports one additional real-time scheduling policy: ``SCHED_RR``.
-The RR stands for **round-robin** and this is sometimes called
-**round-robin scheduling**. In this case, NuttX supports timeslicing.
-If a task with ``SCHED_RR`` scheduling policy is running, then when each
-timeslice elapses, it will give up the CPU to the next task that is
-at the same priority.
-
-.. note::
-
-  1. If there is only one task at this priority, ``SCHED_RR`` and
-     ``SCHED_FIFO`` are the same, AND
-  2. ``SCHED_FIFO`` tasks are never pre-empted in this way.
-
+What matters here is where the decision lands in the data structures above:
+the thread that runs is always the one whose TCB sits at the head of
+``g_readytorun``, and a policy is no more than a rule for keeping that list
+in the right order.
 
 Task IDs
 ========

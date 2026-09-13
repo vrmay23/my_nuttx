@@ -7,7 +7,7 @@ accelerometer by STMicroelectronics. It has both I2C and SPI interfaces,
 although this driver only supports I2C.
 
 This driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface. It supports the
+</os/drivers/special/sensors/sensors_uorb>` interface. It supports the
 self-test capability for both the accelerometer and gyroscope.
 
 .. warning::

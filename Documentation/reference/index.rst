@@ -1,14 +1,13 @@
-.. todo::
-  Add brief intro, distinguishing the arch and user facing APIs. Otherwise there could simply be
-  a top-level document for each API
-
 =============
 API Reference
 =============
+
+The POSIX and NuttX interfaces an application may call.  This answers "what
+can I call, and what does it do"; for how the OS behind those calls is
+built, see :doc:`/os/index`.
 
 .. toctree::
    :caption: Contents:
    :maxdepth: 1
 
    user/index.rst
-   os/index.rst

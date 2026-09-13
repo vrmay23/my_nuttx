@@ -182,4 +182,4 @@ xipfs-nxflat
 
 Same as ``xipfs``, plus the NXFLAT execute-in-place demo.  Building this
 configuration requires ``ldnxflat``, which is not part of a standard
-toolchain installation; see :doc:`/components/nxflat`.
+toolchain installation; see :doc:`/os/binfmt/nxflat`.

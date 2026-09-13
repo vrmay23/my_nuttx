@@ -300,7 +300,7 @@ These commands are defined in ``include/nuttx/analog/ioctl.h``.
 The following commands are available when DMA is enabled
 (``CONFIG_STM32_DAC1CH1_DMA`` or ``CONFIG_STM32_DAC1CH2_DMA``).
 For the standard DAC ioctl commands see
-:doc:`/components/drivers/character/analog/dac/index`.
+:doc:`/os/drivers/character/analog/dac/index`.
 
 .. c:macro:: ANIOC_DAC_DMABUFF_INIT
 

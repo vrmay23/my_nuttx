@@ -7,7 +7,7 @@ Contributed by Daniel Byshkin.
 The Adafruit NAU7802 is a high-resolution 24-bit ADC with an integrated load cell amplifier. It is designed for use with load cells and other sensors that require high precision and low noise measurements. The NAU7802 features a built-in programmable gain amplifier (PGA) that allows for easy calibration and adjustment of the sensor's output.
 
 The driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface.
+</os/drivers/special/sensors/sensors_uorb>` interface.
 
 Application Programming Interface
 =================================

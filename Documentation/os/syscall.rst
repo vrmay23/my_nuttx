@@ -172,7 +172,7 @@ one optional parameter and, if present, it is of type ``mode_t``.
 
 NOTE: This CSV file is used not only to support the generate of trap information,
 but also for the generation of symbol tables.  See ``Documentation/components/tools/``
-and ``Documentation/components/libs/`` for further information.
+and ``Documentation/os/libs/`` for further information.
 
 Auto-Generated Files
 --------------------

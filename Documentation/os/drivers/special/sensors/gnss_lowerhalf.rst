@@ -6,10 +6,10 @@ The GNSS lower half driver is used to create uORB drivers for GNSS/GPS devices.
 The upper-half driver abstracts away the parsing and advertising of NMEA data
 from the device. The way this lower-half is instantiated is similar to lower
 half drivers in the :doc:`uORB framework
-</components/drivers/special/sensors/sensors_uorb>`.
+</os/drivers/special/sensors/sensors_uorb>`.
 
 For an example on how to use this lower-half, see
-`</components/drivers/special/sensors/l86xxx>`
+`</os/drivers/special/sensors/l86xxx>`
 
 Application Programming Interface
 =================================

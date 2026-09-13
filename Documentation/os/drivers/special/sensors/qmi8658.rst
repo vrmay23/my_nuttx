@@ -9,7 +9,7 @@ accelerometer and 3-axis gyroscope. It supports both I2C and SPI interfaces,
 although this driver currently supports I2C communication only.
 
 This driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface. It supports the
+</os/drivers/special/sensors/sensors_uorb>` interface. It supports the
 self-test capability for both the accelerometer and gyroscope.
 
 The driver supports comprehensive features including multiple full-scale ranges,

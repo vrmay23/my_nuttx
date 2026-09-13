@@ -2440,7 +2440,7 @@ Connect the HX711 to the STM32F4 board using the following pins:
     -4
     -4
 
-For more details, refer to the official `HX711 NuttX documentation <https://nuttx.apache.org/docs/latest/components/drivers/character/analog/adc/hx711/index.html>`_.
+For more details, refer to the official `HX711 NuttX documentation <https://nuttx.apache.org/docs/latest/os/drivers/character/analog/adc/hx711/index.html>`_.
 
 nxscope_cdcacm
 --------------

@@ -9,7 +9,7 @@ Microelectronics. It has I2C and SPI interfaces, although this driver currently
 only supports I2C.
 
 The driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface. It supports the
+</os/drivers/special/sensors/sensors_uorb>` interface. It supports the
 self-test capability
 
 Application Programming Interface

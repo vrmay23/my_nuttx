@@ -29,6 +29,7 @@ Keep the entries grouped by the change that introduced them and keep each
 group sorted, so that the file stays reviewable as it grows.
 """
 
+import pathlib
 import posixpath
 
 
@@ -300,6 +301,90 @@ _OS_SCHEDULING = [
     ("reference/os/smp", "os/scheduling/smp"),
 ]
 
+# Grouping the rest of the OS documentation by subsystem.  components/,
+# implementation/ and reference/os/ described the same subsystems at three
+# different depths; they are one tree now, following the source tree.
+_OS_TREES = [
+    ("components/drivers", "os/drivers"),
+    ("components/filesystem", "os/filesystem"),
+    ("components/net", "os/networking"),
+    ("components/mm", "os/memory"),
+    ("components/libs", "os/libs"),
+    ("components/nxgraphics", "os/graphics"),
+    ("components/audio", "os/audio"),
+    ("components/arch", "os/arch"),
+    ("components/concurrency", "os/concurrency"),
+]
+
+_OS_PAGES = [
+    ("components/binfmt", "os/binfmt/index"),
+    ("components/nxflat", "os/binfmt/nxflat"),
+    ("components/crypto", "os/crypto"),
+    ("components/video", "os/video"),
+    ("components/wireless", "os/wireless"),
+    ("components/syscall", "os/syscall"),
+    ("components/paging", "os/memory/paging"),
+    ("components/openamp", "os/openamp"),
+    ("implementation/device_drivers", "os/drivers/device_drivers"),
+    ("implementation/device_nodes", "os/drivers/device_nodes"),
+    ("implementation/drivers_design", "os/drivers/drivers_design"),
+    ("implementation/ioctl", "os/drivers/ioctl"),
+    ("implementation/usb", "os/drivers/usb"),
+    ("implementation/power_management",
+     "os/drivers/special/power/power_management"),
+    ("implementation/syslog", "os/drivers/special/syslog_design"),
+    ("implementation/file_descriptors", "os/filesystem/file_descriptors"),
+    ("implementation/file_permission", "os/filesystem/file_permission"),
+    ("implementation/memory_configurations", "os/memory/memory_configurations"),
+    ("implementation/crc", "os/libs/crc"),
+    ("implementation/kernel_modules_vs_shared_libraries",
+     "os/binfmt/kernel_modules_vs_shared_libraries"),
+    ("implementation/tls", "os/scheduling/tls"),
+    ("implementation/user_identity", "os/scheduling/user_identity"),
+    ("implementation/bottomhalf_interrupt", "os/interrupts/bottomhalf_interrupt"),
+    ("implementation/interrupt_controls", "os/interrupts/interrupt_controls"),
+    ("implementation/critical_sections", "os/interrupts/critical_sections"),
+    ("implementation/tickless_os", "os/time/tickless_os"),
+    ("implementation/short_time_delays", "os/time/short_time_delays"),
+    ("implementation/oneshot_timers_and_cpu_load",
+     "os/time/oneshot_timers_and_cpu_load"),
+    ("implementation/signal_handlers", "os/ipc/signal_handlers"),
+    ("reference/os/index", "os/index"),
+    ("reference/os/addrenv", "os/memory/addrenv"),
+    ("reference/os/iob", "os/memory/iob"),
+    ("reference/os/shm", "os/memory/shm"),
+    ("reference/os/paging", "os/memory/paging"),
+    ("reference/os/events", "os/ipc/events"),
+    ("reference/os/mutex", "os/ipc/mutex"),
+    ("reference/os/sleep", "os/time/sleep"),
+    ("reference/os/time_clock", "os/time/time_clock"),
+    ("reference/os/wqueue", "os/scheduling/wqueue"),
+    ("reference/os/newreno", "os/networking/newreno"),
+    ("reference/os/led", "os/drivers/character/leds/index"),
+    ("reference/os/arch", "os/arch/arch_api"),
+    ("reference/os/board", "os/arch/board_api"),
+    ("reference/os/notifier", "os/notifier"),
+    ("reference/os/app_vs_os", "os/app_vs_os"),
+    ("reference/os/nuttx", "os/nuttx"),
+    ("reference/os/conventions", "os/conventions"),
+]
+
+
+def _moved_trees(pairs):
+    """Expand whole-directory moves into one redirect per page.
+
+    Built from the pages that are there now, so a page added to a section
+    later does not need a line here.
+    """
+    here = pathlib.Path(__file__).parent
+    out = []
+    for old_dir, new_dir in pairs:
+        for page in sorted((here / new_dir).rglob("*.rst")):
+            name = page.relative_to(here / new_dir).with_suffix("").as_posix()
+            out.append((f"{old_dir}/{name}", f"{new_dir}/{name}"))
+    return out
+
+
 redirects = _moved(
     _PLATFORM_ALIGNMENT
     + _TAG_VOCABULARY
@@ -310,4 +395,6 @@ redirects = _moved(
     + _SOURCE_TREE_TRUTH
     + _X86_64_BOARD
     + _OS_SCHEDULING
+    + _OS_PAGES
+    + _moved_trees(_OS_TREES)
 )

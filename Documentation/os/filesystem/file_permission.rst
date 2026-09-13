@@ -133,5 +133,5 @@ References
 * ``include/nuttx/fs/fs.h`` — ``struct mountpt_operations``
 * ``fs/tmpfs/fs_tmpfs.c`` — ``tmpfs_permission``
 * :ref:`user-identity` — credential model
-* :doc:`/components/filesystem/littlefs` — littlefs in-volume DAC
-* :doc:`/components/filesystem/tmpfs` — tmpfs overview
+* :doc:`/os/filesystem/littlefs` — littlefs in-volume DAC
+* :doc:`/os/filesystem/tmpfs` — tmpfs overview

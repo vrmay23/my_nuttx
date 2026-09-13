@@ -166,4 +166,4 @@ recalculate their frequency related settings.
 
 Here is some Power Management documentation:
 
-- :doc:`/components/drivers/special/power/pm/index`
+- :doc:`/os/drivers/special/power/pm/index`

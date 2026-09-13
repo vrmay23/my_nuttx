@@ -242,5 +242,5 @@ IO Expander device drivers are chips that provides more GPIO pins, usually
 connected to the MCU with SPI or I2C bus. It is possible to register
 individual GPIO pins of the expander as a separate pins if needed. This
 option is enabled by ``CONFIG_GPIO_LOWER_HALF`` option. Please refer
-to `ioexpander documentation <https://nuttx.apache.org/docs/latest/components/drivers/special/ioexpander.html>`_
+to `ioexpander documentation <https://nuttx.apache.org/docs/latest/os/drivers/special/ioexpander.html>`_
 for more description.

@@ -32,7 +32,7 @@ Drivers in NuttX generally work in two distinct layers:
     usually implemented at the architecture or board level.
 
 Details about drivers implementation can be found in
-:doc:`../../implementation/drivers_design` and :doc:`../../implementation/device_drivers`.
+:doc:`drivers_design` and :doc:`device_drivers`.
 
 Subdirectories of ``nuttx/drivers``
 ===================================
@@ -298,3 +298,15 @@ system is fully operational.
 It is important to note that during this early initialization phase,
 system resources are not yet available for use. This includes memory allocation,
 file systems, and any other system resources.
+
+How Drivers Work
+================
+
+.. toctree::
+   :maxdepth: 1
+
+   drivers_design.rst
+   device_drivers.rst
+   device_nodes.rst
+   ioctl.rst
+   usb.rst

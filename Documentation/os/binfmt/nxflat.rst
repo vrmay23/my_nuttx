@@ -71,8 +71,8 @@ Limitations
     In fact, true file mapping is only possible with MCUs that provide an MMU1.
     Without an MMU, file system may support eXecution In Place (XIP) to mimic
     file mapping. Two file systems support that kind of XIP execution needed
-    by NXFLAT: :doc:`ROMFS <filesystem/romfs>`, whose image is built on the
-    host and is read-only, and :doc:`XIPFS <filesystem/xipfs>`, which is
+    by NXFLAT: :doc:`ROMFS </os/filesystem/romfs>`, whose image is built on the
+    host and is read-only, and :doc:`XIPFS </os/filesystem/xipfs>`, which is
     writable, so a module can be downloaded onto the board at run time and
     still be executed out of flash.
 

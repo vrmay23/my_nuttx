@@ -3,7 +3,7 @@ L86-XXX
 =======
 
 This driver provides support for the L86-XXX family of GNSS modules by
-Quectel via the :doc:`uorb </components/drivers/special/sensors/sensors_uorb>` interface. 
+Quectel via the :doc:`uorb </os/drivers/special/sensors/sensors_uorb>` interface. 
 Functionality for this driver was tested using the Quectel L86-M33.
 
 .. warning::

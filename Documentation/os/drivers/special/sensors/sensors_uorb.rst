@@ -20,7 +20,7 @@ within the driver, and device nodes are registered separately through the API
 .. note::
 
    When writing a uORB driver for GNSS/GPS devices, please use the :doc:`GNSS
-   lower-half driver </components/drivers/special/sensors/gnss_lowerhalf>`. This
+   lower-half driver </os/drivers/special/sensors/gnss_lowerhalf>`. This
    driver abstracts parsing and advertising of NMEA information.
 
 Naming

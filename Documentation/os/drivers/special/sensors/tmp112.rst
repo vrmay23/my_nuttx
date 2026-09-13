@@ -8,7 +8,7 @@ pins select one of four bus addresses, 0x48 through 0x4b, so four parts can
 share a bus.
 
 Two drivers exist for this part. This one uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface, so the reading
+</os/drivers/special/sensors/sensors_uorb>` interface, so the reading
 appears as a topic the common sensor tools can read. The older driver presents
 a character device instead. Only one of the two is built:
 ``CONFIG_SENSORS_TMP112_UORB`` selects this one, and the board must then call

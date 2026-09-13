@@ -9,7 +9,7 @@ which operates over I2C. They include a small heating element.
 
 The driver provided allows interfacing with the sensor over I2C. It has been
 tested against the SHT41. This driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface.
+</os/drivers/special/sensors/sensors_uorb>` interface.
 
 Application Programming Interface
 =================================

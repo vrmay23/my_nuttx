@@ -30,4 +30,4 @@ not receive or forward logs.
    dependent. This results in more consistent behaviour, but requires
    ``CONFIG_LIBC_EXECFUNCS`` to be enabled.
 
-Read more about ``syslog`` on NuttX: :doc:`/components/drivers/special/syslog`
+Read more about ``syslog`` on NuttX: :doc:`/os/drivers/special/syslog`

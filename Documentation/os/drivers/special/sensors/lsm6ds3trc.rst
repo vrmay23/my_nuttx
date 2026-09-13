@@ -8,7 +8,7 @@ LSM6DSL/LSM6DSO32 family. It has both I2C and SPI interfaces, although
 this driver only supports I2C.
 
 This driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface.
+</os/drivers/special/sensors/sensors_uorb>` interface.
 
 .. warning::
    The LSM6DS3TR-C is a feature-packed sensor, and this driver does not

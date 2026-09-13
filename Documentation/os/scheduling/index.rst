@@ -195,3 +195,6 @@ In this section
    preemption_latency.rst
    cancellation_points.rst
    smp.rst
+   wqueue.rst
+   tls.rst
+   user_identity.rst

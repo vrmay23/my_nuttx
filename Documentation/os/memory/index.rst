@@ -238,3 +238,14 @@ available for usage by drivers.  The I/O buffers have these properties:
    interface allows different protocol modules to use their own unique
    I/O buffer sources and allocation strategies without interfering with
    each other.
+
+Memory Layout and Paging
+------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   memory_configurations.rst
+   addrenv.rst
+   iob.rst
+   paging.rst

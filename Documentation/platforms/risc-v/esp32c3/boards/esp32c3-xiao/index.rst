@@ -255,7 +255,7 @@ smartfs
 -------
 
 This configuration is identical to the ``nimble`` configuration, except that
-there is a 1MB :doc:`SMARTFS </components/filesystem/smartfs>` file system using
+there is a 1MB :doc:`SMARTFS </os/filesystem/smartfs>` file system using
 the chip's on-board flash located at `/data` for storing files.
 
 .. note::
@@ -274,5 +274,5 @@ the chip's on-board flash located at `/data` for storing files.
 .. note::
 
    You can choose to mount other types of file systems to the flash partition,
-   too! :doc:`NXFFS </components/filesystem/nxffs>`, :doc:`littlefs
-   </components/filesystem/littlefs>`, etc.
+   too! :doc:`NXFFS </os/filesystem/nxffs>`, :doc:`littlefs
+   </os/filesystem/littlefs>`, etc.

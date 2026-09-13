@@ -11,7 +11,7 @@ NX Graphics
 ===========
 
 NuttX has supported higher level graphics for some time with 
-the OS's :doc:`/components/nxgraphics/index` and application 
+the OS's :doc:`/os/graphics/index` and application 
 oriented :doc:`NxWidgets </applications/graphics/nxwidgets/index>` and the tiny 
 window manager :doc:`NxWM </applications/graphics/nxwm/index>`. 
 These are higher level in the sense that the primary 

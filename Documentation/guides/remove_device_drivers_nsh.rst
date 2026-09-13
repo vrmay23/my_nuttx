@@ -12,7 +12,7 @@ NuttX and Unix-like Operating Systems Compared
 There are many things that are called device drivers. In this context, the
 discussion is limited to **character device drivers**. In NuttX, character
 device drivers are represented by device driver nodes in the top-level :doc:`pseudo
-filesystem </components/filesystem/pseudofs>`.
+filesystem </os/filesystem/pseudofs>`.
 
 Standard Unix-like operating systems also support device driver nodes, which
 superficially resemble NuttX device driver nodes: Both look like files and

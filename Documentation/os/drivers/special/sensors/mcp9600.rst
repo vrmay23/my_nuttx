@@ -18,7 +18,7 @@ The header file for the MCP9600 driver interface can be included using:
    #include <nuttx/sensors/mcp9600.h>
 
 The MCP9600 registration function allows the driver to be registered as a
-:doc:`UORB </components/drivers/special/sensors/sensors_uorb>` sensor.
+:doc:`UORB </os/drivers/special/sensors/sensors_uorb>` sensor.
 
 The MCP9600 measures three types of temperature:
  * Hot junction temperature

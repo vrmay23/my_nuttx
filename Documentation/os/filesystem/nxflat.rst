@@ -9,7 +9,7 @@ NuttX FLAT Binary Format (NXFLAT)
 Overview
 ========
 
-NuttX supports a configurable :doc:`binary loader <../binfmt>` .
+NuttX supports a configurable :doc:`binary loader </os/binfmt/index>` .
 This binary loader supports loading and executing binary objects from 
 the file system.
 The NuttX binary loader is capable of supporting multiple binary formats.
@@ -174,7 +174,7 @@ See this `thread <https://groups.google.com/forum/>`_ for additional information
 References
 ----------
 
-* :doc:`NXFLAT <../nxflat>`
+* :doc:`NXFLAT </os/binfmt/nxflat>`
 * `XFLATFLAT <http://xflat.sourceforge.net/>`_
 * `FLAT <http://retired.beyondlogic.org/uClinux/bflt.htm>`_
 * `ROMFS <http://romfs.sourceforge.net/>`_

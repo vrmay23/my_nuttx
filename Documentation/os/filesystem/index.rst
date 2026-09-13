@@ -610,3 +610,12 @@ they require:
 
 The requirements are specified by declaring the filesystem in the proper
 array in ``fs/mount/fs_mount.c``.
+
+Files and Permissions
+=====================
+
+.. toctree::
+   :maxdepth: 1
+
+   file_descriptors.rst
+   file_permission.rst

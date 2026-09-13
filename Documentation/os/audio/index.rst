@@ -354,5 +354,5 @@ Related Subdirectories
 Related Pages
 =============
 
-* :doc:`/components/drivers/special/audio`
+* :doc:`/os/drivers/special/audio`
 * :doc:`/applications/audioutils/index`

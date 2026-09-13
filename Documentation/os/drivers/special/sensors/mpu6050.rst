@@ -11,7 +11,7 @@ a 3-axis gyroscope and a 3-axis accelerometer on the same silicon die, communica
 over an I2C serial bus.
 
 The driver uses the :doc:`uorb
-</components/drivers/special/sensors/sensors_uorb>` interface.
+</os/drivers/special/sensors/sensors_uorb>` interface.
 
 Application Programming Interface
 =================================

@@ -15,7 +15,7 @@ Porting a new SoC and board to NuttX requires modifications on arch,
 SoC and board directories.
 For the details,
 see :doc:`/quickstart/organization`,
-:doc:`/components/arch/index`,
+:doc:`/os/arch/index`,
 :doc:`/components/boards`.
 
 To port NuttX properly, we have to understand the boot sequence and

@@ -131,7 +131,7 @@ Summary of Files
    supports the ``CONFIG_BUILD_PROTECTED`` or
    ``CONFIG_BUILD_KERNEL``\ configurations.
 
-   See :doc:`/components/syscall` for details.
+   See :doc:`/os/syscall` for details.
 
 ``src/<chip-name>/``
 
@@ -149,3 +149,12 @@ Supported Architectures
 =======================
 
 The list of supported architectures can be found in :ref:`Supported Platforms <platforms>`.
+
+Architecture Interface
+======================
+
+.. toctree::
+   :maxdepth: 1
+
+   arch_api.rst
+   board_api.rst

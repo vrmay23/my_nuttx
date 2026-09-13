@@ -41,3 +41,11 @@ directory from becoming cluttered with individual libraries.
    libm.rst
    libxx.rst
    libnx/index.rst
+
+Algorithms
+==========
+
+.. toctree::
+   :maxdepth: 1
+
+   crc.rst

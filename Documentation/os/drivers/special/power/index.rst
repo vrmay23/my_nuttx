@@ -8,3 +8,11 @@ Power-related Drivers
   pm/index.rst
   regulator.rst
   battery/fakegauge.rst
+
+Design
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   power_management.rst

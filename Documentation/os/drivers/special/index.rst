@@ -43,6 +43,7 @@ following section.
   segger.rst
   spi.rst
   syslog.rst
+  syslog_design.rst
   sdio.rst
   usbdev.rst
   uvc.rst

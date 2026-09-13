@@ -360,3 +360,9 @@ Configuration Variables
 
 Additional configuration options may be required for the each enabled
 binary format.
+
+.. toctree::
+   :maxdepth: 1
+
+   nxflat.rst
+   kernel_modules_vs_shared_libraries.rst

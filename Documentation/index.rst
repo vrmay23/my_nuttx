@@ -14,26 +14,26 @@ Where to start
 .. grid:: 1 2 2 3
    :gutter: 3
 
-   .. grid-item-card:: Getting Started
+   .. grid-item-card:: :octicon:`rocket;1.2em;sd-text-primary` Getting Started
       :link: quickstart/index
       :link-type: doc
 
-      Install the toolchain, build for a board, and get a shell running.
+      Install the toolchain, build for a board, get a shell.
       Start here if you have never built NuttX.
 
-   .. grid-item-card:: Supported Platforms
+   .. grid-item-card:: :octicon:`cpu;1.2em;sd-text-primary` Supported Platforms
       :link: platforms/index
       :link-type: doc
 
-      Every architecture, chip and board NuttX runs on, and what each board
-      offers.  Start here if you have hardware in your hand.
+      Every architecture, chip and board NuttX runs on.
+      Start here if you have hardware in your hand.
 
-   .. grid-item-card:: Guides
+   .. grid-item-card:: :octicon:`checklist;1.2em;sd-text-primary` Guides
       :link: guides/index
       :link-type: doc
 
-      How to do a particular thing: port to new hardware, write a driver,
-      run without hardware, debug what is happening.
+      How to do a particular thing: port, write a driver, debug.
+      Start here when you know what you want to build.
 
 Understanding the system
 ========================
@@ -41,26 +41,23 @@ Understanding the system
 .. grid:: 1 2 2 3
    :gutter: 3
 
-   .. grid-item-card:: OS Design
+   .. grid-item-card:: :octicon:`stack;1.2em;sd-text-primary` OS Design
       :link: os/index
       :link-type: doc
 
-      How NuttX is built, subsystem by subsystem: the scheduler, memory,
-      file systems, drivers, networking.
+      How NuttX is built, subsystem by subsystem.
 
-   .. grid-item-card:: API Reference
+   .. grid-item-card:: :octicon:`book;1.2em;sd-text-primary` API Reference
       :link: reference/index
       :link-type: doc
 
-      The POSIX and NuttX interfaces an application may call, and what each
-      one does.
+      The POSIX and NuttX calls an application may make.
 
-   .. grid-item-card:: Applications
+   .. grid-item-card:: :octicon:`apps;1.2em;sd-text-primary` Applications
       :link: applications/index
       :link-type: doc
 
-      The programs that ship with NuttX, from the NSH shell to networking
-      utilities and examples.
+      The programs that ship with NuttX, from NSH onwards.
 
 Working on NuttX
 ================
@@ -68,19 +65,17 @@ Working on NuttX
 .. grid:: 1 2 2 2
    :gutter: 3
 
-   .. grid-item-card:: Developing NuttX
+   .. grid-item-card:: :octicon:`tools;1.2em;sd-text-primary` Developing NuttX
       :link: developing/index
       :link-type: doc
 
-      Getting a change accepted, how the build system fits together, what a
-      new chip has to provide, and how the project tests itself.
+      Getting a change accepted, the build system, porting, testing.
 
-   .. grid-item-card:: About
+   .. grid-item-card:: :octicon:`info;1.2em;sd-text-primary` About
       :link: about/index
       :link-type: doc
 
-      Common questions, the vocabulary, how to report a vulnerability, and
-      what changed in each release.
+      Questions, vocabulary, security reports, release notes.
 
 How this documentation is organised
 ===================================

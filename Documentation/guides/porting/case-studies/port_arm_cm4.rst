@@ -27,8 +27,8 @@ Step2 : Add the Board
 
 There are two ways about adding the Board directory.
 The one is in-of-tree, another one is out-of-tree.
-For details see :doc:`/guides/customboards`.
-And if you wanted to add own apps, see :doc:`/guides/customapps`.
+For details see :doc:`/guides/porting/customboards`.
+And if you wanted to add own apps, see :doc:`/guides/build/customapps`.
 
 This time, the way of out-of-tree is selected.
 The directory structure is following :

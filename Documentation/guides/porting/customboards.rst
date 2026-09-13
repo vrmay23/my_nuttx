@@ -2,7 +2,7 @@
 Custom Boards How-To
 ====================
 
-As explained in :doc:`../quickstart/configuring`, supported boards (also known
+As explained in :doc:`/quickstart/configuring`, supported boards (also known
 as "in-tree" boards) are configured using a standard syntax:
 
     .. code-block:: console

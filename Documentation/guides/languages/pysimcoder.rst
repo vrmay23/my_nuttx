@@ -133,7 +133,7 @@ libraries like "input", "output", "math" and so on. Several blocks can have spec
 of inputs/outputs. Double left click on the block opens parameter settings while single right click on the block leads
 to number of inputs/outputs setup. The pysimCoder interface can be seen in the picture below.
 
-.. figure:: image/interface.png
+.. figure:: /guides/image/interface.png
    :align: center
    :width: 100%
 
@@ -142,7 +142,7 @@ to number of inputs/outputs setup. The pysimCoder interface can be seen in the p
 The NuttX template Makefile nuttx.tmf has to be selected in order to generate code for NuttX target.
 This can be done in the top menu by clicking on Block settings icon which is highlighted in the red circle.
 
-.. figure:: image/menu.png
+.. figure:: /guides/image/menu.png
    :align: center
    :width: 100%
 
@@ -151,7 +151,7 @@ This can be done in the top menu by clicking on Block settings icon which is hig
 Block settings option open the following window (showed in the picture below) where you can set template Makefile and
 also Python skript with parameters for the controllers.
 
-.. figure:: image/template.png
+.. figure:: /guides/image/template.png
    :align: center
    :width: 100%
 

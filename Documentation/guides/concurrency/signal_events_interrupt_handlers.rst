@@ -106,7 +106,7 @@ it to zero:
 immediately after the ``sem_init()``. The effect of this function call is to 
 disable priority inheritance for that specific semaphore. There should 
 then be no priority inheritance operations on this semaphore that is 
-used for signaling. See :doc:`/guides/signaling_sem_priority_inheritance` 
+used for signaling. See :doc:`/guides/concurrency/signaling_sem_priority_inheritance` 
 for further information.
 
 Since the semaphore is initialized to zero, each time that a thread joins 
@@ -197,7 +197,7 @@ NOTE: There is possibility of improper interactions between the
 semaphore when it is used for signaling and priority inheritance. 
 In this case, you should disable priority inheritance on the 
 signaling semaphore using ``sem_setprotocol(SEM_PRIO_NONE)``. See 
-:doc:`/guides/signaling_sem_priority_inheritance` 
+:doc:`/guides/concurrency/signaling_sem_priority_inheritance` 
 for further information.
 
 Signals

@@ -39,32 +39,32 @@ Porting procedure
 At first, you have to read and execute :doc:`/quickstart/install` and :doc:`/quickstart/compiling_make`.
 After that, try following procedure.
 
-+------+---------------+--------------------------------------------------------------------+
-| Step | Process       | Comment                                                            |
-+------+---------------+--------------------------------------------------------------------+
-| 1    | Add the SoC   |                                                                    |
-+------+---------------+--------------------------------------------------------------------+
-| 2    | Add the Board | If the board was not sold in the market,                           |
-|      |               | the board directory should be located out-of-tree.                 |
-|      |               | For details see :doc:`/guides/customboards`.                       |
-|      |               | And if you wanted to add own apps, see :doc:`/guides/customapps`.  |
-+------+---------------+--------------------------------------------------------------------+
-| 3    | Configure     | The configure needs to understand related kernel configurations.   |
-|      |               | see :doc:`/guides/port_relatedkernelconfigrations`.                |
-+------+---------------+--------------------------------------------------------------------+
-| 4    | Compile       | The compile tells you which source files are needed in SoC/Board   |
-|      |               | directory to pass the compile.                                     |
-+------+---------------+--------------------------------------------------------------------+
-| 5    | Link          | The link tells you which symbols are needed in SoC/Board directory |
-|      |               | to pass the link.                                                  |
-+------+---------------+--------------------------------------------------------------------+
-| 6    | Implement     | Do implement the symbols which are needed by the link.             |
-+------+---------------+--------------------------------------------------------------------+
-| 7    | Verify        | Do "apps/testing/ostest".                                          |
-|      |               | I think the pass of ostest is the one of proof for proper porting. |
-|      |               | And check the timer implementation whether the kernel could        | 
-|      |               | count the time accurately or not.                                  |
-+------+---------------+--------------------------------------------------------------------+
++------+---------------+-------------------------------------------------------------------------+
+| Step | Process       | Comment                                                                 |
++------+---------------+-------------------------------------------------------------------------+
+| 1    | Add the SoC   |                                                                         |
++------+---------------+-------------------------------------------------------------------------+
+| 2    | Add the Board | If the board was not sold in the market,                                |
+|      |               | the board directory should be located out-of-tree.                      |
+|      |               | For details see :doc:`/guides/porting/customboards`.                    |
+|      |               | And if you wanted to add own apps, see :doc:`/guides/build/customapps`. |
++------+---------------+-------------------------------------------------------------------------+
+| 3    | Configure     | The configure needs to understand related kernel configurations.        |
+|      |               | see :doc:`/guides/porting/port_relatedkernelconfigrations`.             |
++------+---------------+-------------------------------------------------------------------------+
+| 4    | Compile       | The compile tells you which source files are needed in SoC/Board        |
+|      |               | directory to pass the compile.                                          |
++------+---------------+-------------------------------------------------------------------------+
+| 5    | Link          | The link tells you which symbols are needed in SoC/Board directory      |
+|      |               | to pass the link.                                                       |
++------+---------------+-------------------------------------------------------------------------+
+| 6    | Implement     | Do implement the symbols which are needed by the link.                  |
++------+---------------+-------------------------------------------------------------------------+
+| 7    | Verify        | Do "apps/testing/ostest".                                               |
+|      |               | I think the pass of ostest is the one of proof for proper porting.      |
+|      |               | And check the timer implementation whether the kernel could             |
+|      |               | count the time accurately or not.                                       |
++------+---------------+-------------------------------------------------------------------------+
 
 Porting Case Studies
 ===============================
@@ -76,4 +76,4 @@ provide a general idea on how to port.
    :glob:
    :maxdepth: 1
 
-   porting-case-studies/*
+   case-studies/*

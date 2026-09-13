@@ -32,7 +32,7 @@ the maximum time that critical sections are in place in order to manage that jit
 that the variability in response time is within an acceptable range.
 
 NOTE: This discussion applies to Normal interrupt processing. Most of this discussion
-does not apply to :doc:`/guides/zerolatencyinterrupts`. Those interrupts are not masked
+does not apply to :doc:`/guides/concurrency/zerolatencyinterrupts`. Those interrupts are not masked
 in the same fashion and none of the issues address in this page apply to those
 interrupts.
 
@@ -459,7 +459,7 @@ NOTES:
    for ``Tresp1`` should instead be the following? (This assumes that hardware arbitration
    is such that the interrupt of interest will be deferred by no more than one interrupt).
    Concurrent, nested interrupts might be better supported with prioritized.
-   See more: :doc:`/guides/nestedinterrupts`.
+   See more: :doc:`/guides/concurrency/nestedinterrupts`.
 
      * ``Tresp1 = Tcrit + Tintrmax + Tintr + C1``
 
@@ -486,7 +486,7 @@ You have these options:
    sections should correctly be used only to protect resources that are shared between
    tasking level logic and interrupt level logic.
 
-#. Switch to :doc:`/guides/zerolatencyinterrupts`. Those interrupts are not subject
+#. Switch to :doc:`/guides/concurrency/zerolatencyinterrupts`. Those interrupts are not subject
    to most of the issues discussed in this page.
 
 **NOTE**

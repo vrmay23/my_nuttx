@@ -51,7 +51,7 @@ then there is an easy way to do that too: Create a symbolic link in the
 ``apps/`` directory that redirects to your application sub-directory (or copy
 your code into a sub-directory of ``apps/``).
 
-.. image:: image/custom_app_dir_through_extension.png
+.. image:: /guides/image/custom_app_dir_through_extension.png
 
 Makefile and Make.defs
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -129,7 +129,7 @@ appear as a directory under your custom application directory instead of your
 application directories being inserted as sub-directories of ``apps/``. It may
 even be implemented as a sub-module of your custom application directory.
 
-.. image:: image/custom_app_dir_through_containment.png
+.. image:: /guides/image/custom_app_dir_through_containment.png
 
 Kconfig and Makefile
 ^^^^^^^^^^^^^^^^^^^^

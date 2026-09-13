@@ -385,6 +385,74 @@ def _moved_trees(pairs):
     return out
 
 
+# guides/ split by subject.  60 files in one directory, in no order anybody
+# could use; each one now sits under the thing it is about.
+_GUIDES = [
+    ("guides/armv7m_runtimestackcheck", "guides/chip-specific/armv7m_runtimestackcheck"),
+    ("guides/automounter", "guides/filesystem/automounter"),
+    ("guides/building_nuttx_with_app_out_of_src_tree", "guides/build/building_nuttx_with_app_out_of_src_tree"),
+    ("guides/building_uclibcpp", "guides/build/building_uclibcpp"),
+    ("guides/changing_systemclockconfig", "guides/chip-specific/changing_systemclockconfig"),
+    ("guides/cpp_cmake", "guides/build/cpp_cmake"),
+    ("guides/custom_app_directories", "guides/build/custom_app_directories"),
+    ("guides/customapps", "guides/build/customapps"),
+    ("guides/customboards", "guides/porting/customboards"),
+    ("guides/devicetree", "guides/drivers/devicetree"),
+    ("guides/drivers", "guides/drivers/drivers"),
+    ("guides/etcromfs", "guides/filesystem/etcromfs"),
+    ("guides/fork_vfork_migration", "guides/concurrency/fork_vfork_migration"),
+    ("guides/fortify", "guides/security/fortify"),
+    ("guides/fully_linked_elf", "guides/programs/fully_linked_elf"),
+    ("guides/include_files_board_h", "guides/porting/include_files_board_h"),
+    ("guides/integrate_newlib", "guides/build/integrate_newlib"),
+    ("guides/ipv6", "guides/networking/ipv6"),
+    ("guides/kernel_threads_with_custom_stacks", "guides/concurrency/kernel_threads_with_custom_stacks"),
+    ("guides/logging_rambuffer", "guides/drivers/logging_rambuffer"),
+    ("guides/lwl", "guides/drivers/lwl"),
+    ("guides/multiple_nsh_sessions", "guides/nsh/multiple_nsh_sessions"),
+    ("guides/nestedinterrupts", "guides/concurrency/nestedinterrupts"),
+    ("guides/nfs", "guides/networking/nfs"),
+    ("guides/nix_flake", "guides/build/nix_flake"),
+    ("guides/nsh_network_link_management", "guides/networking/nsh_network_link_management"),
+    ("guides/ofloader", "guides/drivers/ofloader"),
+    ("guides/optee", "guides/security/optee"),
+    ("guides/partially_linked_elf", "guides/programs/partially_linked_elf"),
+    ("guides/platform_directories", "guides/build/platform_directories"),
+    ("guides/port", "guides/porting/port"),
+    ("guides/port_bootsequence", "guides/porting/port_bootsequence"),
+    ("guides/port_drivers_to_stm32f7", "guides/chip-specific/port_drivers_to_stm32f7"),
+    ("guides/port_relatedkernelconfigrations", "guides/porting/port_relatedkernelconfigrations"),
+    ("guides/protected_build", "guides/programs/protected_build"),
+    ("guides/pysimcoder", "guides/languages/pysimcoder"),
+    ("guides/qemu_tips", "guides/simulation/qemu_tips"),
+    ("guides/ram_rom_disks", "guides/filesystem/ram_rom_disks"),
+    ("guides/reading_can_msgs", "guides/drivers/reading_can_msgs"),
+    ("guides/remove_device_drivers_nsh", "guides/nsh/remove_device_drivers_nsh"),
+    ("guides/renode", "guides/simulation/renode"),
+    ("guides/rndis", "guides/drivers/rndis"),
+    ("guides/rust", "guides/languages/rust"),
+    ("guides/semihosting", "guides/chip-specific/semihosting"),
+    ("guides/signal_events_interrupt_handlers", "guides/concurrency/signal_events_interrupt_handlers"),
+    ("guides/signaling_sem_priority_inheritance", "guides/concurrency/signaling_sem_priority_inheritance"),
+    ("guides/simulator", "guides/simulation/simulator"),
+    ("guides/smaller_vector_tables", "guides/chip-specific/smaller_vector_tables"),
+    ("guides/specialstuff_in_nuttxheaderfiles", "guides/porting/specialstuff_in_nuttxheaderfiles"),
+    ("guides/stm32_ports", "guides/chip-specific/stm32_ports"),
+    ("guides/stm32ccm", "guides/chip-specific/stm32ccm"),
+    ("guides/stm32nullpointer", "guides/chip-specific/stm32nullpointer"),
+    ("guides/testingtcpip", "guides/networking/testingtcpip"),
+    ("guides/thread_local_storage", "guides/concurrency/thread_local_storage"),
+    ("guides/updating_release_system_elf", "guides/programs/updating_release_system_elf"),
+    ("guides/usbtrace", "guides/drivers/usbtrace"),
+    ("guides/usingkernelthreads", "guides/concurrency/usingkernelthreads"),
+    ("guides/versioning_and_task_names", "guides/concurrency/versioning_and_task_names"),
+    ("guides/zerolatencyinterrupts", "guides/concurrency/zerolatencyinterrupts"),
+    ("guides/porting-case-studies/bcm2711-rpi4b",
+     "guides/porting/case-studies/bcm2711-rpi4b"),
+    ("guides/porting-case-studies/port_arm_cm4",
+     "guides/porting/case-studies/port_arm_cm4"),
+]
+
 redirects = _moved(
     _PLATFORM_ALIGNMENT
     + _TAG_VOCABULARY
@@ -397,4 +465,5 @@ redirects = _moved(
     + _OS_SCHEDULING
     + _OS_PAGES
     + _moved_trees(_OS_TREES)
+    + _GUIDES
 )

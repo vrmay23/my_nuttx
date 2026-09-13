@@ -416,9 +416,9 @@ D-bus, it cannot be used to execute programs. On the other hand, the STM32F3
 has a CCM that is accessible to both the D-Bus and the I-Bus, in which case
 it should be possible to execute programs directly from this TCM.
 
-.. image:: ./image/system_arch_stm32f42xx_and_f43xx.png
+.. image:: /guides/image/system_arch_stm32f42xx_and_f43xx.png
 
-.. image:: ./image/system_arch_stm32f303xBC_and_f358xC.png
+.. image:: /guides/image/system_arch_stm32f303xBC_and_f358xC.png
 
 When ELF programs are loaded into memory, such memory is allocated from the
 heap via a standard memory allocator. With the STM32F4, the CCM is included

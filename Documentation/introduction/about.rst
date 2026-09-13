@@ -185,7 +185,7 @@ Key features of NuttX include:
   * Device-dependent USB class drivers available for USB serial (CDC/ACM and a PL2303 emulation),
     for USB mass storage, for USB networking (RNDIS and CDC/ECM), DFU, and for a dynamically
     configurable, composite USB devices.
-  * Built-in :doc:`/guides/usbtrace` and USB host trace functionality for non-invasive USB debug.
+  * Built-in :doc:`/guides/drivers/usbtrace` and USB host trace functionality for non-invasive USB debug.
 
 * **Graphics Support**
 

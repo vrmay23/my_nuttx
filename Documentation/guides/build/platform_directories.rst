@@ -10,7 +10,7 @@ Let's assume that you are not change the OS itself but want to implement or
 extend platform-specific code.In this case, there are six, maybe seven, 
 places where you can provide the platform code.
 
-.. image:: image/directories.png
+.. image:: /guides/image/directories.png
 
 
 REVISIT: This is a out of date. There has been a recent reorganization 

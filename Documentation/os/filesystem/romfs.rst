@@ -30,7 +30,7 @@ Two arrangements are common, and both appear throughout the board ports:
 
 * Mounted at ``/etc`` to hold a startup script, so the shell has something
   to run at boot without a writable file system existing at all.  See
-  :doc:`/guides/etcromfs`.
+  :doc:`/guides/filesystem/etcromfs`.
 * Holding the binaries that :doc:`/os/binfmt/index` loads, so programs live
   in flash rather than being linked into the kernel image.
 

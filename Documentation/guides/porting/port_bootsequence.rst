@@ -10,7 +10,7 @@ kernel and call ``nsh_main()``. ``nsh_main()`` will execute NuttShell(NSH).
 ``nx_start()`` is NuttX standard function, but the behavior depends on some
 kernel configurations. For example, the calling ``nsh_main()`` is also
 configurable. About related kernel configurations, see
-:doc:`/guides/port_relatedkernelconfigrations`.
+:doc:`/guides/porting/port_relatedkernelconfigrations`.
 
 .. uml::
 

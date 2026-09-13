@@ -106,6 +106,6 @@ The upper half driver supports the **strict TX priority ordering**:
 
 **Usage Note**: The default behavior of the upper half driver is to return
 multiple messages on ``read``. See the `guide on this subject
-</guides/reading_can_msgs.html>`_.
+</guides/drivers/reading_can_msgs.html>`_.
 
 **Examples**: ``drivers/can/mcp2515.c``.

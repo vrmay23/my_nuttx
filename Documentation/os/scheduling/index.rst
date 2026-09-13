@@ -30,34 +30,19 @@ Every thread is in exactly one state, held in its task control block.  The
 states are defined by ``enum tstate_e`` in ``include/nuttx/sched.h`` and
 fall into three groups:
 
-::
+.. figure:: task_states.svg
+   :align: center
+   :width: 100%
+   :alt: A task is created inactive, becomes ready to run, is scheduled onto a
+         CPU, blocks waiting for a resource, and finally exits.
 
-   task_create()
-        |
-        v
-   INACTIVE  --- task_activate() --->+
-                                     |
-   ready to run ---------------------+----------------------------
-                                     |
-        READYTORUN  --- highest priority --->  RUNNING
-             ^                                    |
-             +------------- pre-empted -----------+
-        ASSIGNED     picked a CPU        (CONFIG_SMP only)
-        PENDING      ready, but some thread holds sched_lock()
+   The states of ``enum tstate_e``, and what moves a thread between them.
 
-   ------------+--------------------------------+----------------
-               |                                |
-               | what it was waiting for        | waits for
-               | happened                       | something
-               |                                v
-   blocked ----+---------------------------------------------------
-
-        WAIT_SEM          a semaphore
-        WAIT_SIG          a signal, or sleeping
-        WAIT_EVENT        an event                 (CONFIG_SCHED_EVENTS)
-        WAIT_MQNOTEMPTY   a message to arrive
-        WAIT_MQNOTFULL    room in a message queue
-        STOPPED           SIGCONT                  (CONFIG_SIG_SIGSTOP_ACTION)
+Two further ready-to-run states are conditional and left off the diagram to
+keep it readable.  ``ASSIGNED`` is ``READYTORUN`` with a CPU already picked,
+and exists only under ``CONFIG_SMP``.  ``PENDING`` is a thread that became
+ready while another thread held ``sched_lock()``: it is runnable, and the
+scheduler is not allowed to switch to it yet.
 
 A thread in any *ready-to-run* state is runnable; only one per CPU is
 ``RUNNING``.  A thread in any *blocked* state is waiting for something
@@ -74,6 +59,17 @@ Scheduling policies
 
 The policy applies **between threads of equal priority**.  It never lets a
 lower-priority thread run ahead of a higher-priority one.
+
+.. figure:: policies.svg
+   :align: center
+   :width: 100%
+   :alt: Under SCHED_FIFO a thread keeps the CPU until it blocks; under
+         SCHED_RR threads of equal priority take turns; under
+         SCHED_SPORADIC a thread runs at a high priority while it has
+         budget and drops to a low one when the budget is spent.
+
+   The same two threads under each policy, and what the sporadic parameters
+   mean.
 
 ``SCHED_FIFO`` -- run to completion
 -----------------------------------

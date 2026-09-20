@@ -311,3 +311,83 @@ div.version-selector
 .review-authored table th {
   background: transparent !important;
 }
+
+/* Reading text ------------------------------------------------------------
+ *
+ * Three changes, all about how long a reader can stay on a page.
+ *
+ * Justified prose, with hyphenation on.  Justifying without hyphens is what
+ * produces the rivers of white space that make justified text worse than
+ * ragged-right, so the two go together and neither is useful alone.
+ *
+ * Prose uses the full width of the content column, the same as the cards,
+ * the tables and the diagrams.  A narrower measure reads better in the
+ * abstract -- 60 to 80 characters against the column's 107 -- but it gives
+ * a page two different right margins, and a paragraph that stops short of
+ * the boxes underneath it looks like a mistake rather than like
+ * typography.  Hyphenation is what keeps the long line honest.
+ *
+ * A darker body colour.  The theme's #404040 on white is a little washed
+ * out; #2b3137 raises the contrast from about 10:1 to 13:1, which reads as
+ * sharper without going to black, and black on white is its own kind of
+ * tiring.
+ *
+ * Links take the indigo from logos/NuttX_Simple.svg, the same colour as the
+ * sidebar, instead of the theme's unrelated cyan.
+ */
+
+.rst-content p,
+.rst-content li,
+.rst-content dd {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Anything that is not running prose keeps its own alignment: code has
+ * meaningful whitespace, and a short line in a table or a card only looks
+ * stretched when justified.
+ */
+
+.rst-content pre,
+.rst-content pre *,
+.rst-content .highlight,
+.rst-content .highlight *,
+.rst-content table p,
+.rst-content table li,
+.rst-content .sd-card p,
+.rst-content .sd-card li,
+.rst-content .caption-text,
+.rst-content figcaption,
+.rst-content figcaption p,
+.rst-content .toctree-wrapper li,
+.rst-content dl.c dt,
+.wy-menu-vertical li {
+  text-align: left !important;
+  hyphens: manual;
+  max-width: none;
+}
+
+.rst-content,
+.rst-content p,
+.rst-content li,
+.rst-content dd,
+.rst-content .section,
+.wy-plain-list-disc li {
+  color: #2b3137;
+}
+
+.rst-content p,
+.rst-content li,
+.rst-content dd {
+  line-height: 1.72;
+}
+
+.rst-content a,
+.rst-content a:visited {
+  color: #3c34e3;
+}
+
+.rst-content a:hover {
+  color: #2b2787;
+}

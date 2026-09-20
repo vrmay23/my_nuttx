@@ -22,13 +22,15 @@ Choosing one
        held too long.  ``include/nuttx/atomic.h``
    * - Mutex
      - A thread may need to wait, and holding the lock while blocked is
-       acceptable.  A mutex has an owner, which is what makes priority
-       inheritance possible.  See :doc:`/os/ipc/mutex`.
+       acceptable.  A mutex records its holder, which is what priority
+       inheritance needs in order to boost the right thread.  NuttX tracks
+       holders for plain semaphores too, so ``CONFIG_PRIORITY_INHERITANCE``
+       covers both.  See :doc:`/os/ipc/mutex`.
    * - Spinlock
-     - Under ``CONFIG_SMP``, protecting something so short that sleeping
-       would cost more than spinning -- and where the holder genuinely
-       cannot sleep, such as inside an interrupt handler.
-       ``include/nuttx/spinlock.h``
+     - Protecting something so short that sleeping would cost more than
+       spinning, and where the holder genuinely cannot sleep -- inside an
+       interrupt handler, for instance.  Needs ``CONFIG_SPINLOCK``, which
+       ``CONFIG_SMP`` selects.  ``include/nuttx/spinlock.h``
    * - Reader/writer semaphore
      - Many readers, few writers, and the read side is long enough that
        serialising it would hurt.  ``include/nuttx/rwsem.h``
@@ -37,12 +39,19 @@ Choosing one
        checks afterwards whether a writer interfered; if so, it reads again.
        ``include/nuttx/seqlock.h``
 
-The one that surprises people is the spinlock.  On a single-CPU build there
-is nobody to spin against, so a spinlock degenerates into disabling
-pre-emption -- which means using one on a uniprocessor system is a way of
-writing ``sched_lock()`` that will behave differently the day the code is
-built for SMP.  See :doc:`/os/interrupts/critical_sections` for what that
-choice costs.
+The one worth reading twice is the spinlock, because its two variants
+degrade in opposite directions when ``CONFIG_SPINLOCK`` is off.
+``spin_lock()`` is then a macro that expands to nothing, so code written
+against it is left with no protection at all.  ``spin_lock_irqsave()``
+becomes ``up_irq_save()``, so it still shuts out interrupts on the one CPU
+there is.  The second survives the build choice; the first does not.
+
+Turning ``CONFIG_SPINLOCK`` on in a single-CPU build is worse than either:
+the loop is real and no second CPU is running to end it.  The Kconfig help
+says so outright -- *"Use in a single CPU configuration would most likely
+be fatal."*  A spinlock is an SMP tool, not a portable stand-in for
+``sched_lock()``.  See :doc:`/os/interrupts/critical_sections` for what
+that choice costs.
 
 .. toctree::
    :maxdepth: 2

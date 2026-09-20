@@ -58,6 +58,7 @@ The kernel
 
    scheduling/index.rst
    ipc/index.rst
+   concurrency/index.rst
    time/index.rst
    interrupts/index.rst
    memory/index.rst
@@ -102,7 +103,6 @@ Portability
 
    arch/index.rst
    openamp.rst
-   concurrency/index.rst
 
 Reference
 =========

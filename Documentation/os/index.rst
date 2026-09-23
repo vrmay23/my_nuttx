@@ -22,12 +22,13 @@ you may call -- and it has its own section.
    Where each section of this documentation sits in the system, and which
    directory of the source tree it describes.
 
-The one decision that changes everything
-========================================
+Build modes
+===========
 
 Before reading any subsystem page it is worth knowing which **build mode**
 you are in, because it decides whether there is a boundary between your
-application and the kernel at all:
+application and the kernel at all.  The Kconfig choice that selects it is
+called *Memory organization*, under *Build Configuration*.
 
 .. figure:: build_modes.svg
    :align: center
@@ -41,14 +42,18 @@ application and the kernel at all:
    ``CONFIG_BUILD_PROTECTED`` and ``CONFIG_BUILD_KERNEL``.
 
 A flat build is one program: calling ``write()`` is a function call, and an
-application bug can corrupt the kernel.  A protected build puts an MPU
-between the two halves, so the same call becomes a system call.  A kernel
-build goes further and gives each process its own address space through an
-MMU, which is what makes ``fork()`` and on-demand paging possible -- and why
-they do not exist in the other two.
+application bug can corrupt the kernel.  A protected build is two blobs, one
+privileged and one unprivileged, with an MPU between them, so the same call
+becomes a system call; no address mapping is performed, so the two blobs
+still share one set of addresses.  A kernel build gives each process its own
+address environment through an MMU.  That is what ``fork()`` needs -- the
+child gets its own copy of the parent's memory *at the same virtual
+addresses* -- and what ``CONFIG_PAGING`` requires as well.
 
 Much of what the pages below say depends on this choice, which is why it is
-worth settling first.
+worth settling first.  That is the short version; the page below is the long
+one, and takes each mode in turn, with on-demand paging and address
+environments described alongside them.
 
 .. toctree::
    :maxdepth: 1
@@ -68,14 +73,24 @@ The kernel
    interrupts/index.rst
    memory/index.rst
 
-Storage and I/O
-===============
+Device drivers
+==============
+
+By far the largest part of the OS: ``drivers/`` holds 59 subdirectories, of
+which storage is five.  Everything a board talks to goes through here.
+
+.. toctree::
+   :maxdepth: 1
+
+   drivers/index.rst
+
+File systems and networking
+===========================
 
 .. toctree::
    :maxdepth: 1
 
    filesystem/index.rst
-   drivers/index.rst
    networking/index.rst
 
 Running programs

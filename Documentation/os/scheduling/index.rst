@@ -50,10 +50,6 @@ specific, and the state says what: a semaphore, a signal, an event, room in
 a message queue.  This is why a stack dump tells you not just that a thread
 is stuck but what it is stuck on.
 
-``ASSIGNED`` exists only under ``CONFIG_SMP``, and ``PENDING`` only matters
-while some thread holds ``sched_lock()``: the thread is ready, and the
-scheduler is not allowed to switch to it yet.
-
 Scheduling policies
 ===================
 

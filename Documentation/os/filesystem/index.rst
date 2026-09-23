@@ -550,7 +550,7 @@ in a unified interface.
 .. NOTE::
   Each file system has to globally expose their implementations of the unified
   interface as defined by ``struct mountpt_operations`` (in
-  ``include/fs/fs.h``) to one of the lists defined in ``fs/mount/fs_mount.c``
+  ``include/nuttx/fs/fs.h``) to one of the lists defined in ``fs/mount/fs_mount.c``
   depending on the type of the file system.
 
   They also need their own `magic number <https://en.wikipedia.org/wiki/Magic_number_(programming)>`_

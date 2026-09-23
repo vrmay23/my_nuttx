@@ -28,10 +28,9 @@ to interpret them.
 Handle with care
 ================
 
-This is the one driver in NuttX where a bug cannot be fixed by rebooting.
-Writing the wrong value to a fuse is permanent, and on many parts one of the
-available fuses disables the debug interface -- which means a mistake there
-costs you the board, not just the boot.
+A fuse is one-time programmable: writing the wrong value is permanent, and
+no reboot undoes it.  On many parts one of the available fuses disables the
+debug interface, so a mistake there costs you the board, not just the boot.
 
 Two consequences worth designing around:
 

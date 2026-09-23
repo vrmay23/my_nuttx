@@ -2,11 +2,20 @@
 Board Documentation Example
 ===========================
 
-.. tags:: arch:arm, chip:stm32f4, part:stm32f407, vendor:st
+The tags go at the very top of the page, before anything else, like this:
 
-The tags go at the very top of the page, before anything else.  They are what
-lets a board be found by what it is rather than only by where it sits in the
-tree, so the vocabulary is controlled and checked by
+.. literalinclude:: board-tags-example.txt
+   :language: rst
+
+That example is pulled in from a ``.txt`` file rather than written here
+directly.  ``sphinx_tags`` collects tags by scanning the raw text of every
+``.rst`` file for the line, without caring whether it sits in a code block,
+so a directive written out on this page -- even as an example -- would file
+the template itself in the tag index, next to the boards it is a template
+for.
+
+Tags are what lets a board be found by what it is rather than only by where
+it sits in the tree, so the vocabulary is controlled and checked by
 ``tools/ci/check_doc_coverage.py``.  Use only these namespaces, all lower
 case:
 
@@ -41,9 +50,6 @@ actually see them.
 ``arch:``, ``chip:`` and ``vendor:`` are checked against the directory the page
 lives in by ``tools/ci/check_doc_coverage.py``, so they cannot drift from the
 source tree.
-
-.. This template is not tagged itself: a live ``.. tags::`` here would put
-   example tags into the real tag index.
 
 .. figure:: example-board.jpg
    :scale: 30 %

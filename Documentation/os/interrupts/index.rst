@@ -7,11 +7,13 @@ and how code protects itself from one.  The code lives in ``sched/irq/``,
 with the vector table and the entry sequence in
 ``arch/<arch>/src/``.
 
-An interrupt handler in NuttX runs with interrupts disabled and cannot
-block.  That is the whole reason the rest of this section exists: anything
-that has to wait, allocate or take a lock has to be handed off, which is
-what :doc:`bottom halves <bottomhalf_interrupt>` and the work queues are
-for.
+On most architectures an interrupt handler runs with interrupts disabled --
+nesting is the exception rather than the rule, and
+:doc:`/guides/concurrency/nestedinterrupts` covers it -- and on every
+architecture the handler cannot block.  That is the whole reason the rest of
+this section exists: anything that has to wait, allocate or take a lock has
+to be handed off, which is what :doc:`bottom halves <bottomhalf_interrupt>`
+and the work queues are for.
 
 .. figure:: interrupt_flow.svg
    :align: center

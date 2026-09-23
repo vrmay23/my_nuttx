@@ -2,13 +2,15 @@
 SYSLOG
 ======
 
-.. note::
-   This page and :doc:`syslog_design` are two descriptions of SYSLOG that
-   were written separately and have drifted apart.  They share most of their
-   sections; each also has sections the other does not.  Reconciling them
-   needs somebody who knows which half is current, so they are kept apart
-   until then rather than stitched together into something that reads as one
-   document but is not.
+.. container:: review-authored
+
+   .. note::
+      This page and :doc:`syslog_design` are two descriptions of SYSLOG that
+      were written separately and have drifted apart.  They share most of their
+      sections; each also has sections the other does not.  Reconciling them
+      needs somebody who knows which half is current, so they are kept apart
+      until then rather than stitched together into something that reads as one
+      document but is not.
 
 
 

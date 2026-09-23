@@ -13,5 +13,7 @@ board may be configured to use either the LPC4088 or the LPC1788.
 
 **Driver Status.**
 
-The LPC40xx boards are listed together with the LPC17xx boards on the
-:doc:`index` page.
+.. container:: review-authored
+
+   The LPC40xx boards are listed together with the LPC17xx boards on the
+   :doc:`index` page.

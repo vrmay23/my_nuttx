@@ -28,7 +28,9 @@ instead of reading every page against git.
 Two ways to mark something:
 
   * list a document in REVIEW_PAGES and the whole page is highlighted;
-  * list "docname#section-id" in REVIEW_SECTIONS and only that section is.
+  * list "docname#section-id" in REVIEW_SECTIONS and only that section is;
+  * wrap the block in ".. container:: review-authored" in the source, for
+    prose that is not a whole section -- a lead paragraph or a note.
 
 Delete this file, its entry in conf.py's extensions list and the
 .review-authored rules in _static/custom.css to switch it all off.
@@ -64,6 +66,17 @@ REVIEW_PAGES = {
     "os/drivers/character/efuse",
     "os/filesystem/nfs",
     "os/concurrency/index",
+    # Section and front-matter pages whose prose is entirely new.  guides/index
+    # keeps only its title from the page it replaced; components/index,
+    # implementation/index and reference/index were retitled and rewritten down
+    # to the toctree; the last three are new files.
+    "guides/index",
+    "components/index",
+    "implementation/index",
+    "reference/index",
+    "ReleaseNotes/index",
+    "about/index",
+    "developing/index",
 }
 
 #: Sections added to a page that already existed.
@@ -81,6 +94,16 @@ REVIEW_SECTIONS = {
     "os/libs/index": {"algorithms"},
     "os/networking/index": {"congestion-control"},
     "os/drivers/special/power/index": {"design"},
+    # The home page keeps the upstream paragraph that introduces NuttX, so the
+    # four sections below it are marked rather than the whole page.
+    "index": {
+        "where-to-start",
+        "understanding-the-system",
+        "working-on-nuttx",
+        "how-this-documentation-is-organised",
+    },
+    "os/scheduling/smp": {"architecture-interface"},
+    "platforms/x86_64/intel64/index": {"supported-boards"},
 }
 
 CLASS = "review-authored"

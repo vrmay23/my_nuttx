@@ -4,10 +4,12 @@
 SysLog
 ======
 
-.. note::
-   See :doc:`syslog` for the driver and interface description.  That page and
-   this one overlap heavily and still need to be reconciled; see the note
-   there.
+.. container:: review-authored
+
+   .. note::
+      See :doc:`syslog` for the driver and interface description.  That page and
+      this one overlap heavily and still need to be reconciled; see the note
+      there.
 
 
 

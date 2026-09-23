@@ -50,6 +50,11 @@ they do not exist in the other two.
 Much of what the pages below say depends on this choice, which is why it is
 worth settling first.
 
+.. toctree::
+   :maxdepth: 1
+
+   build_modes.rst
+
 The kernel
 ==========
 

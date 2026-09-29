@@ -2,11 +2,50 @@
 Board Documentation Example
 ===========================
 
-.. tags:: chip:example, arch:example, vendor:example
+The tags go at the very top of the page, before anything else, like this:
 
-.. At the very top of the page, place your tags section! You should include any
-   tags which maybe applicable to your board, such as the chip it uses, its
-   architecture, any peripherals (i.e. ``ethernet``), etc.
+.. literalinclude:: board-tags-example.txt
+   :language: rst
+
+That example is pulled in from a ``.txt`` file rather than written here
+directly.  ``sphinx_tags`` collects tags by scanning the raw text of every
+``.rst`` file for the line, without caring whether it sits in a code block,
+so a directive written out on this page -- even as an example -- would file
+the template itself in the tag index, next to the boards it is a template
+for.
+
+Tags are what lets a board be found by what it is rather than only by where
+it sits in the tree, so the vocabulary is fixed.  Use only these namespaces,
+all lower case:
+
+``arch:``
+   The architecture, spelled exactly as the directory under ``arch/`` and
+   ``boards/`` -- ``arm``, ``arm64``, ``risc-v``, ``xtensa``, ``avr``, and so
+   on.  Not the CPU core: ``armv8-m`` and ``cortex-m33`` are not architectures.
+
+``chip:``
+   The chip family, spelled exactly as the directory under
+   ``arch/<arch>/src/`` -- ``stm32f4``, ``esp32s3``, ``nrf52``.  A board built
+   around two chips carries both.  This is checked against the directory the
+   page lives in, so it cannot be anything else.
+
+``part:``
+   The exact chip on the board -- ``stm32f407``, ``nrf52840``.  Only you know
+   this one; it is what somebody holding the board will search for.  The tag
+   index lists parts underneath their family.
+
+``vendor:``
+   Who makes the chip, not who makes the board -- the board maker is already
+   in the board name.  One vendor per chip family, so pages for the same
+   family agree with each other.
+
+What the board offers and how far the port has been taken are **not** tags.
+They belong in the Support Status and Peripheral Support sections below, where
+there is room to be exact and where a reader looking at this one board will
+actually see them.
+
+``arch:``, ``chip:`` and ``vendor:`` should match the directory the page lives
+in, so that the tags and the tree say the same thing.
 
 .. figure:: example-board.jpg
    :scale: 30 %
@@ -56,6 +95,51 @@ board, mention them here.
    is for the chip documentation to cover (as well as list unimplemented chip
    features). I.e don't list "this board has I2C" if it's not user accessible
    and is instead just used for communicating with peripherals.
+
+Support Status
+==============
+
+.. Say how far the port has been taken, so a reader can tell at a glance
+   whether to expect a finished product or a starting point.  Pick one:
+
+   **Experimental** -- it boots, but significant parts are missing, untested
+   or known broken.  Say which.  A page in this state should also open with a
+   ``.. warning::``.
+
+   **Functional** -- everything marked Yes below works and has been exercised
+   on real hardware.
+
+   **Mature** -- functional, and used in real projects across more than one
+   release.
+
+This port is **Functional**.
+
+.. Then say what it was last checked against, and how.  "Verified" here means
+   somebody ran it, not that it compiled.
+
+Last verified on NuttX 12.9.0, on real hardware, with the ``nsh`` and
+``ostest`` configurations.
+
+Peripheral Support
+==================
+
+.. This is the table a reader is really after: what of the board actually
+   works under NuttX.  Support is Yes, No or Partial; if it is Partial, the
+   note has to say what is missing.  Leave out peripherals the board does not
+   bring out at all -- that belongs to the chip documentation.
+
+The following list indicates peripherals supported in NuttX:
+
+==========  ======= ================================
+Peripheral  Support Notes
+==========  ======= ================================
+UART        Yes
+GPIO        Yes
+SPI         Partial Master only, no DMA
+I2C         Yes
+USB         No
+Ethernet    No      No PHY fitted on this board
+==========  ======= ================================
 
 Buttons and LEDs
 ================

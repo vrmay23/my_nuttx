@@ -1,45 +1,23 @@
-======================
-Implementation Details
-======================
+=========================
+Porting and Conventions
+=========================
+
+Notes that are not about one subsystem: what a chip has to provide, how the
+make build works, and the naming rules the code follows.  Two others sit here
+for historical rather than topical reasons: :doc:`hardfaults`, which
+:doc:`/debugging/cortexmhardfaults` covers at greater length, and
+:doc:`simulation`, alongside :doc:`/guides/simulation/simulator`.
+
+How the OS itself works is in :doc:`/os/index`.  The step-by-step guide to
+adding a new SoC or board is :doc:`/guides/porting/port`.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   
-   bottomhalf_interrupt.rst
-   cancellation_points.rst
+   :maxdepth: 1
+
    chip_h.rst
-   chroot.rst
-   context_switches.rst
-   crc.rst
-   critical_sections.rst
-   device_drivers.rst
-   device_nodes.rst
-   drivers_design.rst
-   file_descriptors.rst
-   file_permission.rst
    hardfaults.rst
-   interrupt_controls.rst
-   ioctl.rst
-   kernel_modules_vs_shared_libraries.rst
-   kernel_threads_vs_pthreads.rst
    make_build_system.rst
-   memory_configurations.rst
    naming_arch_mcu_board_interfaces.rst
    naming_os_internals.rst
    nuttx_initialization_sequence.rst
-   nuttx_tasking.rst
-   oneshot_timers_and_cpu_load.rst
-   power_management.rst
-   preemption_latency.rst
-   processes_vs_tasks.rst
-   short_time_delays.rst
-   signal_handlers.rst
    simulation.rst
-   smp.rst
-   syslog.rst
-   tasks_vs_threads.rst
-   tickless_os.rst
-   tls.rst
-   user_identity.rst
-   usb.rst

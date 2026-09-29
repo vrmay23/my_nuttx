@@ -1,34 +1,23 @@
-=============
-OS Components
-=============
+=========================
+Build System and Tooling
+=========================
 
-NuttX is very feature-rich RTOS and is thus composed of various different
-subsystems. The following sections explain how each of these main RTOS components
-work and can be used. For detailed documentation on the specific API used in this
-case, you can head to the :doc:`reference <../reference/index>`.
+Reference for the machinery around the OS rather than the OS itself: the
+CMake build, the linker facility that lets code register itself at link time,
+what a board directory holds and how to add one, and the programs that run on
+your host.  The subsystems that make up NuttX are in :doc:`/os/index`, and
+how to compile and configure a build in the first place is in
+:doc:`/quickstart/index`.
+
+One word on ``boards/``, because it can look like an exception: the code
+there *is* part of the built image, as :doc:`boards` says in its opening
+lines.  What this section documents is the configuration side -- what a board
+directory holds, how to configure NuttX for one, and how to add another.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-   
-   binfmt.rst
-   concurrency/index.rst
-   iterable_sections.rst
-   drivers/index.rst
-   nxflat.rst
-   nxgraphics/index.rst
-   paging.rst
-   audio/index.rst
-   filesystem/index.rst
-   libs/index.rst
-   net/index.rst
-   mm/index.rst
-   syscall.rst
-   tools/index.rst
-   arch/index.rst
-   boards.rst
+
    cmake.rst
-   openamp.rst
-   video.rst
-   crypto.rst
-   wireless.rst
+   iterable_sections.rst
+   boards.rst
+   tools/index.rst

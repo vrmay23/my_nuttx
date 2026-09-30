@@ -11,4 +11,3 @@ API Reference
    :maxdepth: 1
 
    user/index.rst
-   os/index.rst
